@@ -1,10 +1,11 @@
-[gd_scene load_steps=15 format=3 uid="uid://dlcq2gkt85b4q"]
+[gd_scene load_steps=16 format=3 uid="uid://dlcq2gkt85b4q"]
 
 [ext_resource type="Script" path="res://scenes/player/player.gd" id="1_1rsda"]
 [ext_resource type="Texture2D" uid="uid://btjyke0t3qtwi" path="res://scenes/player/sprites/cookie.png" id="2_cp4cd"]
 [ext_resource type="Texture2D" uid="uid://chgcnxquejqns" path="res://scenes/player/sprites/gloss.png" id="2_wq2mr"]
 [ext_resource type="Texture2D" uid="uid://d3h0l1toa4xro" path="res://scenes/player/sprites/eyes.png" id="4_s8spw"]
 [ext_resource type="Texture2D" uid="uid://b3li0tf60fppp" path="res://scenes/player/sprites/mouth.png" id="5_ekqu3"]
+[ext_resource type="PackedScene" uid="uid://hu7t8skah5lv" path="res://scenes/windable/windable.tscn" id="6_8sffo"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_b83yy"]
 radius = 14.0
@@ -107,3 +108,5 @@ sprite_frames = SubResource("SpriteFrames_k1wea")
 
 [node name="mouth" type="AnimatedSprite2D" parent="sprites"]
 sprite_frames = SubResource("SpriteFrames_uwtxk")
+
+[node name="windable" parent="." instance=ExtResource("6_8sffo")]

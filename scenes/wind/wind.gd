@@ -9,12 +9,19 @@ class_name Wind
 func _ready():
 	pass # Replace with function body.
 
-func getWind():
-	return [angle,strength]
+func get_wind():
+	return WindProperties.new(angle, strength)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	$WindArea/CollisionShape2D.shape.size = size
 	$WindArea.position.x = size.x/2.0
 	$WindArea/DebugHelper.global_rotation_degrees = angle
-	pass
+
+class WindProperties:
+	var angle
+	var strength
+	
+	func _init(angle, strength):
+		self.angle = angle
+		self.strength = strength
