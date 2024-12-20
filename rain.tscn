@@ -1,0 +1,42 @@
+[gd_scene load_steps=4 format=3 uid="uid://xiiee8pk0inx"]
+
+[ext_resource type="Script" path="res://rain.gd" id="1_bgcv1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cal72"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_bou1i"]
+particle_flag_disable_z = true
+emission_shape_scale = Vector3(10, 1, 1)
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+direction = Vector3(0, 1, 0)
+spread = 0.0
+initial_velocity_min = 200.0
+initial_velocity_max = 300.0
+gravity = Vector3(0, 0, 0)
+collision_mode = 2
+
+[node name="Rain" type="Node2D"]
+script = ExtResource("1_bgcv1")
+
+[node name="RainArea" type="Area2D" parent="."]
+position = Vector2(0, 10)
+collision_layer = 0
+collision_mask = 256
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RainArea"]
+shape = SubResource("RectangleShape2D_cal72")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="RainArea/CollisionShape2D"]
+position = Vector2(0, -10)
+amount = 16
+process_material = SubResource("ParticleProcessMaterial_bou1i")
+fixed_fps = 60
+visibility_rect = Rect2(-10, 0, 20, 20)
+
+[node name="Timer" type="Timer" parent="RainArea"]
+wait_time = 0.1
+autostart = true
+
+[connection signal="timeout" from="RainArea/Timer" to="RainArea" method="_on_timer_timeout"]
