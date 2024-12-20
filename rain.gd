@@ -20,4 +20,8 @@ func _process(delta):
 
 
 func _on_timer_timeout():
+	var areas = $RainArea.get_overlapping_areas()
+	for area in areas:
+		if area.has_method("applyRain"):
+			area.applyRain()
 	pass # Replace with function body.
