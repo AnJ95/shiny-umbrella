@@ -1,20 +1,17 @@
-[gd_scene load_steps=3 format=3 uid="uid://bad2rbn7w7xqq"]
+[gd_scene load_steps=2 format=3 uid="uid://bad2rbn7w7xqq"]
 
 [ext_resource type="PackedScene" uid="uid://dlcq2gkt85b4q" path="res://scenes/player/player.tscn" id="1_qv0x6"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ohy8a"]
-size = Vector2(500, 40)
-
 [node name="Node2D" type="Node2D"]
-
-[node name="player" parent="." instance=ExtResource("1_qv0x6")]
-position = Vector2(130, 124)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="StaticBody2D"]
 position = Vector2(157, 265)
-shape = SubResource("RectangleShape2D_ohy8a")
+polygon = PackedVector2Array(-250, 17, -250, -18, -136, -19, -127, -44, -76, -48, -83, -74, -22, -92, -24, -53, 23, -81, 82, -50, 62, -17, 128, -43, 145, -12, 180, -17, 190, -55, 242, -57, 251, -20, 251, 19)
 
 [node name="Polygon2D" type="Polygon2D" parent="StaticBody2D"]
-polygon = PackedVector2Array(-93, 246, -92, 283, 408, 285, 407, 246)
+polygon = PackedVector2Array(-93, 246, -92, 283, 408, 285, 407, 246, 399, 207, 346, 210, 336, 249, 305, 256, 285, 223, 218, 250, 240, 214, 181, 184, 133, 214, 133, 173, 73, 189, 81, 217, 31, 220, 22.763, 246)
+
+[node name="player" parent="." instance=ExtResource("1_qv0x6")]
+position = Vector2(130, 124)
