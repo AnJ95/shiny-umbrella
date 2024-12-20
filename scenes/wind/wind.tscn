@@ -1,8 +1,9 @@
 [gd_scene load_steps=5 format=3 uid="uid://cl75yrpog7s2b"]
 
-[ext_resource type="Script" path="res://wind.gd" id="1_wqyee"]
+[ext_resource type="Script" path="res://scenes/wind/wind.gd" id="1_wqyee"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cal72"]
+size = Vector2(200, 200)
 
 [sub_resource type="Curve" id="Curve_4fkf5"]
 _data = [Vector2(1, 0.5), 0.3, 0.0, 1, 0]

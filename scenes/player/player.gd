@@ -25,4 +25,10 @@ func _physics_process(delta: float) -> void:
 func _process(delta: float) -> void:
 	
 	$umbrella.rotation = (get_global_mouse_position() - self.position).angle()
-	pass
+	
+	var a = 0
+	
+	for i in $umbrella/windable.get_wind_properties():
+		a += i.strength
+	
+	print(a)

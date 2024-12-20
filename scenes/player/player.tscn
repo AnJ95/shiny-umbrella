@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://dlcq2gkt85b4q"]
+[gd_scene load_steps=17 format=3 uid="uid://dlcq2gkt85b4q"]
 
 [ext_resource type="Script" path="res://scenes/player/player.gd" id="1_1rsda"]
 [ext_resource type="Texture2D" uid="uid://btjyke0t3qtwi" path="res://scenes/player/sprites/cookie.png" id="2_cp4cd"]
@@ -9,6 +9,10 @@
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_b83yy"]
 radius = 14.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0ipyr"]
+radius = 9.0
+height = 38.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kekri"]
 atlas = ExtResource("2_cp4cd")
@@ -89,11 +93,17 @@ polygon = PackedVector2Array(19, -17, 25, -14, 29, -8, 31, 0, 30, 6, 25, 13, 19,
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="umbrella"]
 position = Vector2(13, 0)
-polygon = PackedVector2Array(19, -17, 19, 16, 25, 13, 30, 6, 31, 0, 29, -8, 25, -14)
+polygon = PackedVector2Array(19, -16, 19, 16, 25, 13, 30, 6, 31, 0, 29, -8, 25, -14)
 
 [node name="Polygon2D" type="Polygon2D" parent="umbrella"]
 color = Color(0.336551, 0.268717, 0.0896299, 1)
 polygon = PackedVector2Array(0, -1, 32, -1, 32, 1, 0, 1)
+
+[node name="windable" parent="umbrella" instance=ExtResource("6_8sffo")]
+position = Vector2(37, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="umbrella/windable"]
+shape = SubResource("CapsuleShape2D_0ipyr")
 
 [node name="sprites" type="Node2D" parent="."]
 
@@ -108,5 +118,3 @@ sprite_frames = SubResource("SpriteFrames_k1wea")
 
 [node name="mouth" type="AnimatedSprite2D" parent="sprites"]
 sprite_frames = SubResource("SpriteFrames_uwtxk")
-
-[node name="windable" parent="." instance=ExtResource("6_8sffo")]

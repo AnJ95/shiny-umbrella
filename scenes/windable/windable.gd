@@ -11,5 +11,5 @@ func _process(delta: float) -> void:
 func get_wind_properties():
 	var winds = []
 	for wind in get_overlapping_areas():
-		winds.append(wind.get_wind())
+		winds.append(wind.get_parent().get_wind())
 	return winds
