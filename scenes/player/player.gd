@@ -26,6 +26,12 @@ func _physics_process(delta: float) -> void:
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 
+	var winds = $umbrella/windable.get_wind_properties()
+	for wind in winds:
+		var windDirection = Vector2.RIGHT#.rotate(wind.angle)
+		if(umbrellaDirection.dot(windDirection)>=0):
+			velocity += windDirection * wind.strength
+
 	move_and_slide()
 
 func applyRain(rainAngle):
