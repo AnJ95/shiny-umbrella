@@ -168,6 +168,9 @@ func _process(delta: float) -> void:
 		umbrella_open = true
 		$umbrella/umbrella_sprite.play("open")
 	
+	$umbrella/collision_open.disabled = not umbrella_open
+	$umbrella/collision_closed.disabled =  umbrella_open
+	
 	# restart
 	if Input.is_action_pressed("restart"):
 		get_tree().reload_current_scene()

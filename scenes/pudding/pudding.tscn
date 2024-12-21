@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://3rsa8a3rit2v"]
+
+[ext_resource type="Script" path="res://scenes/pudding/pudding.gd" id="1_oafip"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p1lvk"]
+
+[node name="pudding" type="StaticBody2D"]
+collision_layer = 65
+collision_mask = 0
+script = ExtResource("1_oafip")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_p1lvk")
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+color = Color(0.615686, 0.611765, 0.317647, 1)
+polygon = PackedVector2Array(-10, -10, -10, 10, 10, 10, 10, -10)
