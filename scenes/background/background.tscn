@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://ccuq0uylebblr"]
+
+[ext_resource type="Texture2D" uid="uid://dmjvhjcp44bl7" path="res://scenes/background/background.png" id="2_jlcw1"]
+[ext_resource type="Script" path="res://scenes/background/background_sprite.gd" id="2_ruxtj"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b1ht8"]
+atlas = ExtResource("2_jlcw1")
+region = Rect2(0, -2000, 1728, 6430)
+
+[node name="Background" type="ParallaxBackground"]
+layer = -1
+follow_viewport_enabled = true
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="."]
+motion_scale = Vector2(-1, 0.06)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxLayer"]
+texture = SubResource("AtlasTexture_b1ht8")
+script = ExtResource("2_ruxtj")
