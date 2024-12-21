@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://3rsa8a3rit2v"]
+[gd_scene load_steps=13 format=3 uid="uid://3rsa8a3rit2v"]
 
 [ext_resource type="Script" path="res://scenes/pudding/pudding.gd" id="1_oafip"]
 [ext_resource type="Texture2D" uid="uid://ha7odp4gyq4u" path="res://scenes/tilemap/tilemap.png" id="2_02nso"]
+[ext_resource type="Texture2D" uid="uid://b3c15l2q7a4d2" path="res://scenes/pudding/particles.png" id="3_ry80s"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p1lvk"]
 size = Vector2(24, 24)
@@ -21,13 +22,56 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_2jmq2"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_wg1sr"]
+particle_flag_disable_z = true
+directional_velocity_min = 1.0
+directional_velocity_max = 1.0
+directional_velocity_curve = SubResource("CurveXYZTexture_2jmq2")
+orbit_velocity_min = 9.49949e-08
+orbit_velocity_max = 9.49949e-08
+radial_velocity_min = 50.0
+radial_velocity_max = 50.0
+gravity = Vector3(0, 98, 0)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w2e1d"]
+atlas = ExtResource("3_ry80s")
+region = Rect2(16, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_saohj"]
+atlas = ExtResource("3_ry80s")
+region = Rect2(8, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fl3y1"]
+atlas = ExtResource("3_ry80s")
+region = Rect2(0, 0, 8, 8)
+
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_b0cya"]
+frames = 3
+frame_0/texture = SubResource("AtlasTexture_w2e1d")
+frame_1/texture = SubResource("AtlasTexture_saohj")
+frame_1/duration = 1.0
+frame_2/texture = SubResource("AtlasTexture_fl3y1")
+frame_2/duration = 1.0
+
 [node name="pudding" type="StaticBody2D"]
 collision_layer = 65
 collision_mask = 0
 script = ExtResource("1_oafip")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="pudding_shape" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_p1lvk")
 
-[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+[node name="pudding_sprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_6q5at")
+
+[node name="pudding_particles" type="GPUParticles2D" parent="."]
+emitting = false
+amount = 10
+process_material = SubResource("ParticleProcessMaterial_wg1sr")
+texture = SubResource("AnimatedTexture_b0cya")
+one_shot = true
+explosiveness = 1.0
+
+[connection signal="finished" from="pudding_particles" to="." method="_on_pudding_particles_finished"]
