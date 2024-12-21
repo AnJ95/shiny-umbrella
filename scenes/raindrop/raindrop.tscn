@@ -22,7 +22,6 @@ texture = ExtResource("2_halil")
 stream = ExtResource("3_cckr6")
 
 [node name="Timer" type="Timer" parent="."]
-autostart = true
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

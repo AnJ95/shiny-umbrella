@@ -25,4 +25,4 @@ position = Vector2(240, 312)
 polygon = PackedVector2Array(0, -96, 0, 32, 312, 32, 312, -96)
 
 [node name="raincloud" parent="." instance=ExtResource("5_glmn2")]
-position = Vector2(593, 416)
+position = Vector2(672, 448)
