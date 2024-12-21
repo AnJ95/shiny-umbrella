@@ -49,12 +49,15 @@ var wind_force = Vector2(0.0,0.0)
 
 #Angle of protection of umbrella in degrees
 const UMBRELLA_PROTECTION_ANGLE = 30.0
-var hp = 100.0
 var umbrella_direction = Vector2(0.0,1.0)
 #Umbrella Angle in degrees
 var umbrella_angle = 0.0
 #Umbrella open or not?
 var umbrella_open = true
+
+# HP
+const MAX_HP = 10
+var hp = MAX_HP
 
 func _ready():
 	$umbrella/GroundCast.add_exception($".")
@@ -135,6 +138,7 @@ func applyRain(rain_angle):
 		hp -= 1.0
 
 func _process(delta: float) -> void:
+	# umbrella rotation
 	umbrella_angle =  rad_to_deg((get_global_mouse_position() - self.position).angle())
 	$umbrella.rotation_degrees = umbrella_angle
 	umbrella_direction = (get_global_mouse_position() - self.position).normalized()
@@ -142,10 +146,10 @@ func _process(delta: float) -> void:
 	# hand movement
 	$umbrella/hands/left_hand.position.x = 11 + (cos($umbrella.rotation) + 1) * 8
 	$umbrella/hands/right_hand.position.x = 27 - (cos($umbrella.rotation) + 1) * 8
-	
 	$umbrella/hands/left_hand.position.y = -3 + (cos($umbrella.rotation) + 1) * 3
 	$umbrella/hands/right_hand.position.y = 3 + (cos($umbrella.rotation) + 1) * 3
 	
+	# umbrella closing
 	if Input.is_action_pressed("close_umbrella"):
 		umbrella_open = false
 		$umbrella/umbrella_sprite.play("closed")
@@ -153,10 +157,29 @@ func _process(delta: float) -> void:
 		umbrella_open = true
 		$umbrella/umbrella_sprite.play("open")
 	
+	# restart
 	if Input.is_action_pressed("restart"):
 		get_tree().reload_current_scene()
+	
+	# frosting
+	if hp > 0:
+		$sprites/frosting.frame = ($sprites/frosting.hframes - 1) - (hp - 1) / (MAX_HP / $sprites/frosting.hframes)
+	else:
+		$sprites/frosting.visible = false
+	
+	# death
+	if hp <= 0 and (is_on_floor() or is_on_ceiling() or is_on_wall()):
+		die()
 
 func hit_by_rain():
-	self.hp -= 10
+	if hp > 0:
+		self.hp -= 1
 	print(self.hp)
-	pass
+
+func die():
+	self.visible = false
+	self.set_process(false)
+	$audio/die_audio.play()
+
+func _on_die_audio_finished() -> void:
+	queue_free()
