@@ -56,6 +56,10 @@ var umbrella_angle = 0.0
 #Umbrella open or not?
 var umbrella_open = true
 
+func _ready():
+	$umbrella/UmbrellaCast.add_exception($".")
+	pass
+
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	control_factor = 1.0
@@ -94,6 +98,9 @@ func _physics_process(delta: float) -> void:
 	var winds = []
 	#If no ground between player and umbrella
 	if(!$umbrella/UmbrellaCast.is_colliding() and umbrella_open):
+		pass
+	if($umbrella/UmbrellaCast.get_collider()):
+		print($umbrella/UmbrellaCast.get_collider())
 		winds = $umbrella/windable.get_wind_properties()
 	#If not in wind, wind_force decays by damping factor each second
 	if(winds.size() == 0): 
@@ -104,7 +111,7 @@ func _physics_process(delta: float) -> void:
 		in_wind = true
 	for wind in winds:
 		var wind_direction = Vector2.from_angle(deg_to_rad(wind.angle))
-		if(umbrella_direction.dot(wind_direction)>=0.4):
+		if(umbrella_direction.dot(wind_direction)>=0.2):
 			wind_force += wind_direction*wind.strength
 		else:
 			acceleration = 0.0
