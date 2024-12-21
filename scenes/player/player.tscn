@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://dlcq2gkt85b4q"]
+[gd_scene load_steps=24 format=3 uid="uid://dlcq2gkt85b4q"]
 
 [ext_resource type="Script" path="res://scenes/player/player.gd" id="1_1rsda"]
 [ext_resource type="Texture2D" uid="uid://btjyke0t3qtwi" path="res://scenes/player/sprites/cookie.png" id="2_cp4cd"]
@@ -18,21 +18,6 @@ animations = [{
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_kekri")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_abevm"]
-atlas = ExtResource("2_wq2mr")
-region = Rect2(0, 0, 32, 32)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_d5vb8"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_abevm")
 }],
 "loop": true,
 "name": &"default",
@@ -147,8 +132,10 @@ position_smoothing_enabled = true
 [node name="cookie" type="AnimatedSprite2D" parent="sprites"]
 sprite_frames = SubResource("SpriteFrames_5kr0s")
 
-[node name="frosting" type="AnimatedSprite2D" parent="sprites"]
-sprite_frames = SubResource("SpriteFrames_d5vb8")
+[node name="frosting" type="Sprite2D" parent="sprites"]
+texture = ExtResource("2_wq2mr")
+hframes = 2
+frame = 1
 
 [node name="eyes" type="AnimatedSprite2D" parent="sprites"]
 sprite_frames = SubResource("SpriteFrames_k1wea")
