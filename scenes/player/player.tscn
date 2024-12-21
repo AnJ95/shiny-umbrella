@@ -137,7 +137,6 @@ sprite_frames = SubResource("SpriteFrames_5kr0s")
 [node name="frosting" type="Sprite2D" parent="sprites"]
 texture = ExtResource("2_wq2mr")
 hframes = 2
-frame = 1
 
 [node name="eyes" type="AnimatedSprite2D" parent="sprites"]
 sprite_frames = SubResource("SpriteFrames_k1wea")

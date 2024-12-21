@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=4 uid="uid://r2psjmq8k87b"]
+[gd_scene load_steps=5 format=4 uid="uid://r2psjmq8k87b"]
 
 [ext_resource type="PackedScene" uid="uid://c488wi6bm28k0" path="res://scenes/levels/level.tscn" id="1_t8tb8"]
 [ext_resource type="PackedScene" uid="uid://cfa5njwr7rmau" path="res://scenes/wind/wind_polygon.tscn" id="2_bh1du"]
 [ext_resource type="PackedScene" uid="uid://duhnhhvemkuai" path="res://scenes/raincloud/raincloud.tscn" id="3_bims6"]
+[ext_resource type="PackedScene" uid="uid://3rsa8a3rit2v" path="res://scenes/pudding/pudding.tscn" id="4_qgli8"]
 
 [node name="Level" instance=ExtResource("1_t8tb8")]
 
@@ -121,3 +122,15 @@ angle = 270.0
 [node name="raincloud" parent="." index="6" instance=ExtResource("3_bims6")]
 position = Vector2(-96, -888)
 tile_map_data = PackedByteArray("AAAFABAAAAACAAoAAAAFAA8AAAACAAgAAAAEABAAAAABAAoAAAAEAA8AAAABAAgAAAADABAAAAAEAAgAAAADAA8AAAAEAAkAAAACABAAAAABAAkAAAACAA8AAAABAAkAAAABABAAAAABAAkAAAABAA8AAAAFAAkAAAAAABAAAAAFAAgAAAAAAA8AAAABAAgAAAD//xAAAAAAAAoAAAD//w8AAAAAAAgAAAADAA4AAAACAAgAAAACAA4AAAABAAgAAAABAA4AAAAAAAgAAAADABEAAAACAAoAAAACABEAAAABAAoAAAABABEAAAABAAoAAAAAABEAAAAAAAoAAADt/xkAAAAFAAgAAADw/xgAAAACAAgAAADv/xgAAAABAAgAAADu/xgAAAABAAgAAADw/xkAAAACAAkAAADv/xkAAAABAAkAAADu/xkAAAABAAkAAADw/xoAAAACAAoAAADv/xoAAAABAAoAAADu/xoAAAABAAoAAADt/xoAAAAAAAoAAADt/xgAAAAAAAgAAADs/xkAAAABAAsAAADr/xkAAAAAAAsAAAD+/+L/AAACAAoAAAD+/+H/AAACAAgAAAD9/+P/AAACAAoAAAD9/+L/AAAEAAgAAAD9/+H/AAABAAgAAAD8/+P/AAABAAoAAAD8/+L/AAABAAkAAAD8/+H/AAABAAgAAAD7/+P/AAAEAAgAAAD7/+L/AAABAAkAAAD7/+H/AAAEAAkAAAD6/+P/AAABAAkAAAD6/+L/AAABAAkAAAD6/+H/AAABAAkAAAD5/+P/AAABAAkAAAD5/+L/AAABAAkAAAD5/+H/AAABAAkAAAD4/+P/AAABAAkAAAD4/+L/AAABAAkAAAD4/+H/AAABAAkAAAD3/+P/AAABAAkAAAD3/+L/AAABAAkAAAD3/+H/AAABAAkAAAD2/+P/AAABAAkAAAD2/+L/AAABAAkAAAD2/+H/AAABAAkAAAD1/+P/AAAFAAgAAAD1/+L/AAABAAkAAAD1/+H/AAAFAAkAAAD0/+P/AAABAAoAAAD0/+L/AAABAAkAAAD0/+H/AAABAAgAAADz/+P/AAABAAoAAADz/+L/AAAFAAkAAADz/+H/AAAAAAgAAADy/+P/AAAAAAoAAADy/+L/AAAAAAgAAAD7/+T/AAACAAoAAAD6/+T/AAABAAoAAAD5/+T/AAABAAoAAAD4/+T/AAABAAoAAAD3/+T/AAABAAoAAAD2/+T/AAABAAoAAAD1/+T/AAAAAAoAAAD7/+D/AAACAAgAAAD6/+D/AAABAAgAAAD5/+D/AAABAAgAAAD4/+D/AAABAAgAAAD3/+D/AAABAAgAAAD2/+D/AAABAAgAAAD1/+D/AAAAAAgAAAA=")
+
+[node name="pudding" parent="." index="7" instance=ExtResource("4_qgli8")]
+position = Vector2(-366, 357)
+
+[node name="pudding2" parent="." index="8" instance=ExtResource("4_qgli8")]
+position = Vector2(-343, 357)
+
+[node name="pudding3" parent="." index="9" instance=ExtResource("4_qgli8")]
+position = Vector2(-343, 333)
+
+[node name="pudding4" parent="." index="10" instance=ExtResource("4_qgli8")]
+position = Vector2(-343, 309)
