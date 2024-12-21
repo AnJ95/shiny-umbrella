@@ -12,6 +12,7 @@
 radius = 14.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0ipyr"]
+radius = 9.0
 height = 54.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_go3gj"]
@@ -102,18 +103,18 @@ position_smoothing_enabled = true
 [node name="umbrella" type="Area2D" parent="."]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="umbrella"]
-position = Vector2(13, 0)
+position = Vector2(3, 0)
 polygon = PackedVector2Array(40, -23, 40, 23, 51, 16, 55, 6, 55, -6, 51, -16)
 
 [node name="windable" parent="umbrella" instance=ExtResource("6_8sffo")]
-position = Vector2(37, 0)
+position = Vector2(27, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="umbrella/windable"]
 position = Vector2(22, 0)
 shape = SubResource("CapsuleShape2D_0ipyr")
 
 [node name="umbrella_sprite" type="AnimatedSprite2D" parent="umbrella"]
-position = Vector2(41, 0)
+position = Vector2(31, 0)
 rotation = 1.5708
 sprite_frames = SubResource("SpriteFrames_5redo")
 
