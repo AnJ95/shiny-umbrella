@@ -5,9 +5,11 @@ const JUMP_VELOCITY = -400.0
 #Safe area from rain
 const rainProtectionAngle = 30.0
 var hp = 100.0
-var umbrellaDirection = Vector2(0.0,1.0)
+var umbrella_direction = Vector2(0.0,1.0)
 #Umbrella Angle in degrees
 var umbrellaAngle = 0.0
+var acceleration = Vector2(0.0,0.0)
+var damping = 0.5
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
@@ -28,11 +30,15 @@ func _physics_process(delta: float) -> void:
 
 	var winds = $umbrella/windable.get_wind_properties()
 	for wind in winds:
-		var windDirection = Vector2.RIGHT#.rotate(wind.angle)
-		if(umbrellaDirection.dot(windDirection)>=0):
-			velocity += windDirection * wind.strength
-
+		var wind_direction = Vector2.from_angle(deg_to_rad(wind.angle))
+		if(umbrella_direction.dot(wind_direction)>=0):
+			print("in wind")
+			acceleration = wind_direction*wind.strength
+		else:
+			acceleration = wind_direction*wind.strength/10.0
+	velocity += acceleration
 	move_and_slide()
+	acceleration = acceleration * damping
 
 func applyRain(rainAngle):
 	var angleDiff = wrapf(rainAngle - umbrellaAngle,0.0,360.0)
@@ -48,7 +54,7 @@ pass
 func _process(delta: float) -> void:
 	umbrellaAngle =  rad_to_deg((get_global_mouse_position() - self.position).angle())
 	$umbrella.rotation_degrees = umbrellaAngle
-	umbrellaDirection = (get_global_mouse_position() - self.position).normalized()
+	umbrella_direction = (get_global_mouse_position() - self.position).normalized()
 	var a = 0
 	
 	for i in $umbrella/windable.get_wind_properties():
