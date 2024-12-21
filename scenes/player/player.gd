@@ -129,10 +129,6 @@ pass
 func _process(delta: float) -> void:
 	umbrella_angle =  rad_to_deg((get_global_mouse_position() - self.position).angle())
 	$umbrella.rotation_degrees = umbrella_angle
+	$right_hand.rotation_degrees = umbrella_angle
+	$left_hand.rotation_degrees = umbrella_angle
 	umbrella_direction = (get_global_mouse_position() - self.position).normalized()
-	var a = 0
-	
-	for i in $umbrella/windable.get_wind_properties():
-		a += i.strength
-	
-	print(a)
