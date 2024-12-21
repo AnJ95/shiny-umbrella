@@ -104,7 +104,6 @@ func _physics_process(delta: float) -> void:
 	for wind in winds:
 		var wind_direction = Vector2.from_angle(deg_to_rad(wind.angle))
 		if(umbrella_direction.dot(wind_direction)>=0.4):
-			print("in wind")
 			wind_force += wind_direction*wind.strength
 		else:
 			acceleration = 0.0
