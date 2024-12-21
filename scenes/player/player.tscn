@@ -73,6 +73,9 @@ animations = [{
 radius = 9.0
 height = 54.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_n6b1p"]
+radius = 14.0357
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_a6yac"]
 atlas = ExtResource("3_rmrgq")
 region = Rect2(46, 0, 46, 47)
@@ -130,9 +133,6 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_n6b1p"]
-radius = 14.0357
-
 [node name="player" type="CharacterBody2D"]
 collision_layer = 17
 collision_mask = 17
@@ -166,10 +166,15 @@ polygon = PackedVector2Array(40, -23, 40, 23, 51, 16, 55, 6, 55, -6, 51, -16)
 
 [node name="windable" parent="umbrella" instance=ExtResource("6_8sffo")]
 position = Vector2(27, 0)
+collision_layer = 0
 
 [node name="windableUmbrella" type="CollisionShape2D" parent="umbrella/windable"]
 position = Vector2(19, 0)
 shape = SubResource("CapsuleShape2D_0ipyr")
+
+[node name="windablePlayer" type="CollisionShape2D" parent="umbrella/windable"]
+position = Vector2(-27, 0)
+shape = SubResource("CircleShape2D_n6b1p")
 
 [node name="umbrella_sprite" type="AnimatedSprite2D" parent="umbrella"]
 position = Vector2(34, 0)
@@ -178,9 +183,14 @@ sprite_frames = SubResource("SpriteFrames_5redo")
 animation = &"open"
 autoplay = "open"
 
-[node name="UmbrellaCast" type="RayCast2D" parent="umbrella"]
+[node name="WindCast" type="RayCast2D" parent="umbrella"]
 target_position = Vector2(55, 0)
 collision_mask = 257
+hit_from_inside = true
+collide_with_areas = true
+
+[node name="GroundCast" type="RayCast2D" parent="umbrella"]
+target_position = Vector2(55, 0)
 hit_from_inside = true
 collide_with_areas = true
 

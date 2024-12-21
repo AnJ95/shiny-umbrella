@@ -57,7 +57,8 @@ var umbrella_angle = 0.0
 var umbrella_open = true
 
 func _ready():
-	$umbrella/UmbrellaCast.add_exception($".")
+	$umbrella/GroundCast.add_exception($".")
+	$umbrella/WindCast.add_exception($".")
 	pass
 
 func _physics_process(delta: float) -> void:
@@ -96,13 +97,18 @@ func _physics_process(delta: float) -> void:
 			velocity.x = move_toward(velocity.x, 0, SPEED*AIR_INERTIA_FACTOR*delta)
 	
 	var winds = []
-	#If no ground between player and umbrella
-	if(!$umbrella/UmbrellaCast.is_colliding() and umbrella_open):
-		pass
+	
 	#Wind in between player and body, affect by wind
 	if(umbrella_open):
-		if($umbrella/UmbrellaCast.get_collider() is Area2D or !$umbrella/UmbrellaCast.get_collider()):
-			winds = $umbrella/windable.get_wind_properties()
+		$umbrella/windable/windablePlayer.disabled = true
+		$umbrella/windable/windableUmbrella.disabled = false
+		print("WindCast collides with " + str($umbrella/WindCast.get_collider()))
+		print("GroundCast collides with " + str($umbrella/GroundCast.get_collider()))
+		if($umbrella/WindCast.get_collider() is Area2D):
+			$umbrella/windable/windablePlayer.disabled = false
+		if($umbrella/GroundCast.get_collider()):
+			$umbrella/windable/windableUmbrella.disabled = true
+		winds = $umbrella/windable.get_wind_properties()
 	#If not in wind, wind_force decays by damping factor each second
 	if(winds.size() == 0): 
 		wind_force = wind_force * (1.0-WIND_DAMPING)
