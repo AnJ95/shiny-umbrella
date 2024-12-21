@@ -101,6 +101,7 @@ process_callback = 0
 position_smoothing_enabled = true
 
 [node name="umbrella" type="Area2D" parent="."]
+collision_layer = 128
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="umbrella"]
 position = Vector2(3, 0)
@@ -117,6 +118,9 @@ shape = SubResource("CapsuleShape2D_0ipyr")
 position = Vector2(31, 0)
 rotation = 1.5708
 sprite_frames = SubResource("SpriteFrames_5redo")
+
+[node name="UmbrellaCast" type="RayCast2D" parent="umbrella"]
+target_position = Vector2(48, 0)
 
 [node name="sprites" type="Node2D" parent="."]
 

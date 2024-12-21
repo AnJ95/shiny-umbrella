@@ -53,7 +53,7 @@ const UMBRELLA_PROTECTION_ANGLE = 30.0
 var hp = 100.0
 var umbrella_direction = Vector2(0.0,1.0)
 #Umbrella Angle in degrees
-var umbrellaAngle = 0.0
+var umbrella_angle = 0.0
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
@@ -89,8 +89,11 @@ func _physics_process(delta: float) -> void:
 			velocity.x = move_toward(velocity.x, 0, SPEED*GROUND_INERTIA_FACTOR*delta)
 		else:
 			velocity.x = move_toward(velocity.x, 0, SPEED*AIR_INERTIA_FACTOR*delta)
-
-	var winds = $umbrella/windable.get_wind_properties()
+	
+	var winds = []
+	#If no ground between player and umbrella
+	if(!$umbrella/UmbrellaCast.is_colliding()):
+		winds = $umbrella/windable.get_wind_properties()
 	#If not in wind, wind_force decays by damping factor each second
 	if(winds.size() == 0): 
 		wind_force = wind_force * (1.0-WIND_DAMPING)
@@ -113,7 +116,7 @@ func _physics_process(delta: float) -> void:
 	
 
 func applyRain(rainAngle):
-	var angleDiff = wrapf(rainAngle - umbrellaAngle,0.0,360.0)
+	var angleDiff = wrapf(rainAngle - umbrella_angle,0.0,360.0)
 	#if protected from rain
 	if(angleDiff >= 90-UMBRELLA_PROTECTION_ANGLE && angleDiff <= 90+UMBRELLA_PROTECTION_ANGLE ):
 		pass
@@ -124,8 +127,8 @@ func applyRain(rainAngle):
 pass
 
 func _process(delta: float) -> void:
-	umbrellaAngle =  rad_to_deg((get_global_mouse_position() - self.position).angle())
-	$umbrella.rotation_degrees = umbrellaAngle
+	umbrella_angle =  rad_to_deg((get_global_mouse_position() - self.position).angle())
+	$umbrella.rotation_degrees = umbrella_angle
 	umbrella_direction = (get_global_mouse_position() - self.position).normalized()
 	var a = 0
 	

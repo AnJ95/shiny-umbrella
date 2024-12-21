@@ -17,9 +17,9 @@ position = Vector2(114, 524)
 position = Vector2(45, 407)
 size = Vector2i(200, 400)
 angle = 270.0
-strength = 20.0
+strength = 5.0
 
 [node name="Wind2" parent="." instance=ExtResource("3_kb4kf")]
 position = Vector2(411, 295)
 size = Vector2i(200, 100)
-strength = 100.0
+strength = 10.0
