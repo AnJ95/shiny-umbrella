@@ -1,9 +1,12 @@
-[gd_scene load_steps=5 format=4 uid="uid://cmnkcms5oc5dc"]
+[gd_scene load_steps=7 format=4 uid="uid://cmnkcms5oc5dc"]
 
 [ext_resource type="TileSet" uid="uid://tunvhuo13u3q" path="res://scenes/tilemap/tileset.tres" id="1_46dhu"]
 [ext_resource type="PackedScene" uid="uid://dlcq2gkt85b4q" path="res://scenes/player/player.tscn" id="2_i6cxx"]
 [ext_resource type="PackedScene" uid="uid://vt2g2nv5qi6n" path="res://scenes/wind/wind_polygon.tscn" id="4_bqg1v"]
+[ext_resource type="PackedScene" uid="uid://3cpk6seepfld" path="res://scenes/pickup/pickup.tscn" id="5_anf17"]
 [ext_resource type="PackedScene" uid="uid://duhnhhvemkuai" path="res://scenes/raincloud/raincloud.tscn" id="5_glmn2"]
+
+[sub_resource type="ImageTexture" id="ImageTexture_f6gks"]
 
 [node name="TerrainTest" type="Node2D"]
 
@@ -26,4 +29,7 @@ polygon = PackedVector2Array(0, -96, 0, 32, 312, 32, 312, -96)
 
 [node name="raincloud" parent="." instance=ExtResource("5_glmn2")]
 position = Vector2(672, 448)
-tile_map_data = PackedByteArray("AAAAAP//AAACAAgAAAD//wAAAAAAAAoAAAAAAAAAAAACAAoAAAD/////AAAAAAgAAAA=")
+
+[node name="Pickup" parent="." instance=ExtResource("5_anf17")]
+position = Vector2(496, 320)
+texture = SubResource("ImageTexture_f6gks")
