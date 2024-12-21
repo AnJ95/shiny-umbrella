@@ -20,6 +20,7 @@ size = Vector2(20, 20)
 
 [node name="Wind" type="Node2D"]
 script = ExtResource("1_wqyee")
+strength = 0.0
 
 [node name="WindArea" type="Area2D" parent="."]
 position = Vector2(10, 0)
