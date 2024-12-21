@@ -1,3 +1,4 @@
+class_name HealthPickupResource
 extends PickupResource
 
 @export var hp : int = 1
