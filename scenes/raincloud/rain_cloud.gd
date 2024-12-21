@@ -4,8 +4,7 @@ extends TileMap
 @export_range(0, 360, 1, "degrees") var angle = 0.0
 @export var active = false
 @onready var raindrop_scene = preload("res://scenes/raindrop/raindrop.tscn")
-@export var raindrop_lifetime = 2.0
-const MAX_RAINDROPS :int = 8000
+const MAX_RAINDROPS :int = 64
 var positions = []
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -29,11 +28,12 @@ func _process(delta):
 
 
 func _on_timer_timeout():
-	var raindrop = raindrop_scene.instantiate()
-	var rng = RandomNumberGenerator.new()
-	var raindrop_timer = Timer.new()
-	#raindrop_timer.wait_time = RAINDROP_LIFETIME
-	raindrop.position = positions[randi_range(0,positions.size()-1)]
-	if($Raindrops.get_child_count()<=MAX_RAINDROPS):
-		$Raindrops.add_child(raindrop)
+	if(active):
+		var raindrop = raindrop_scene.instantiate()
+		var rng = RandomNumberGenerator.new()
+		var raindrop_timer = Timer.new()
+		#raindrop_timer.wait_time = RAINDROP_LIFETIME
+		raindrop.position = positions[randi_range(0,positions.size()-1)]
+		if($Raindrops.get_child_count()<=MAX_RAINDROPS):
+			$Raindrops.add_child(raindrop)
 	pass # Replace with function body.
