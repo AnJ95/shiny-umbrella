@@ -162,9 +162,24 @@ func _process(delta: float) -> void:
 		get_tree().reload_current_scene()
 	
 	# frosting
-	$sprites/frosting.frame = ($sprites/frosting.hframes - 1) - (hp - 1) / (MAX_HP / $sprites/frosting.hframes)
+	if hp > 0:
+		$sprites/frosting.frame = ($sprites/frosting.hframes - 1) - (hp - 1) / (MAX_HP / $sprites/frosting.hframes)
+	else:
+		$sprites/frosting.visible = false
+	
+	# death
+	if hp <= 0 and (is_on_floor() or is_on_ceiling() or is_on_wall()):
+		die()
 
 func hit_by_rain():
 	if hp > 0:
 		self.hp -= 1
 	print(self.hp)
+
+func die():
+	self.visible = false
+	self.set_process(false)
+	$audio/die_audio.play()
+
+func _on_die_audio_finished() -> void:
+	queue_free()

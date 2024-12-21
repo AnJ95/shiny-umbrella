@@ -26,4 +26,3 @@ polygon = PackedVector2Array(0, -96, 0, 32, 312, 32, 312, -96)
 
 [node name="raincloud" parent="." instance=ExtResource("5_glmn2")]
 position = Vector2(672, 448)
-tile_map_data = PackedByteArray("AAAAAP//AAACAAgAAAD//wAAAAAAAAoAAAAAAAAAAAACAAoAAAD/////AAAAAAgAAAA=")

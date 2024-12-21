@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://dlcq2gkt85b4q"]
+[gd_scene load_steps=25 format=3 uid="uid://dlcq2gkt85b4q"]
 
 [ext_resource type="Script" path="res://scenes/player/player.gd" id="1_1rsda"]
 [ext_resource type="Texture2D" uid="uid://btjyke0t3qtwi" path="res://scenes/player/sprites/cookie.png" id="2_cp4cd"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://b3li0tf60fppp" path="res://scenes/player/sprites/mouth.png" id="5_ekqu3"]
 [ext_resource type="PackedScene" uid="uid://hu7t8skah5lv" path="res://scenes/windable/windable.tscn" id="6_8sffo"]
 [ext_resource type="Texture2D" uid="uid://xd0b3mlsrai1" path="res://scenes/player/sprites/hand.png" id="8_pxm87"]
+[ext_resource type="AudioStream" uid="uid://7ahrtn6pmo75" path="res://scenes/player/audio/die.wav" id="9_fajux"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kekri"]
 atlas = ExtResource("2_cp4cd")
@@ -193,3 +194,10 @@ sprite_frames = SubResource("SpriteFrames_m0m6d")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_n6b1p")
+
+[node name="audio" type="Node2D" parent="."]
+
+[node name="die_audio" type="AudioStreamPlayer2D" parent="audio"]
+stream = ExtResource("9_fajux")
+
+[connection signal="finished" from="audio/die_audio" to="." method="_on_die_audio_finished"]
