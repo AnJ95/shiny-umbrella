@@ -102,8 +102,6 @@ func _physics_process(delta: float) -> void:
 	if(umbrella_open):
 		$umbrella/windable/windablePlayer.disabled = true
 		$umbrella/windable/windableUmbrella.disabled = false
-		print("WindCast collides with " + str($umbrella/WindCast.get_collider()))
-		print("GroundCast collides with " + str($umbrella/GroundCast.get_collider()))
 		if($umbrella/WindCast.get_collider() is Area2D):
 			$umbrella/windable/windablePlayer.disabled = false
 		if($umbrella/GroundCast.get_collider()):
