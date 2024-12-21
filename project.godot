@@ -15,6 +15,13 @@ run/main_scene="res://scenes/tilemap/tilemap_test.tscn"
 config/features=PackedStringArray("4.3", "Mobile")
 config/icon="res://icon.svg"
 
+[display]
+
+window/size/viewport_width=864
+window/size/viewport_height=486
+window/stretch/mode="canvas_items"
+window/stretch/aspect="expand"
+
 [input]
 
 left={
@@ -51,6 +58,7 @@ close_umbrella={
 
 [layer_names]
 
+2d_physics/layer_8="Umbrella"
 2d_physics/layer_9="Wind"
 2d_physics/layer_10="Rain"
 
