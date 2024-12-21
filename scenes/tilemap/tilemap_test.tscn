@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=4 uid="uid://cmnkcms5oc5dc"]
+[gd_scene load_steps=5 format=4 uid="uid://cmnkcms5oc5dc"]
 
 [ext_resource type="TileSet" uid="uid://tunvhuo13u3q" path="res://scenes/tilemap/tileset.tres" id="1_46dhu"]
 [ext_resource type="PackedScene" uid="uid://dlcq2gkt85b4q" path="res://scenes/player/player.tscn" id="2_i6cxx"]
 [ext_resource type="PackedScene" uid="uid://vt2g2nv5qi6n" path="res://scenes/wind/wind_polygon.tscn" id="4_bqg1v"]
+[ext_resource type="AudioStream" uid="uid://bi7iaed0lf5dr" path="res://song.mp3" id="4_eaujx"]
 
 [node name="TerrainTest" type="Node2D"]
 
@@ -22,3 +23,7 @@ angle = 270.0
 [node name="WindPolygon2" parent="." instance=ExtResource("4_bqg1v")]
 position = Vector2(240, 312)
 polygon = PackedVector2Array(0, -96, 0, 32, 312, 32, 312, -96)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_eaujx")
+autoplay = true
