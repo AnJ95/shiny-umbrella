@@ -1,5 +1,5 @@
 extends CharacterBody2D
-
+class_name Player
 #Max speed of player, caps length of velocity each frame
 const MAX_SPEED = SPEED*2.0
 #Movement speed of player (maximum grounded speed)

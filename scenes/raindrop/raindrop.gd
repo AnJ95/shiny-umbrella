@@ -1,5 +1,5 @@
 extends Area2D
-
+class_name RainDrop
 const RAINDROP_LIFETIME = 5.0
 
 var velocity = Vector2(0,1)
