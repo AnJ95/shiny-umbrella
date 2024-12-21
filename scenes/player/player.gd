@@ -2,6 +2,12 @@ extends CharacterBody2D
 
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
+#Safe area from rain
+const rainProtectionAngle = 30.0
+var hp = 100.0
+var umbrellaDirection = Vector2(0.0,1.0)
+#Umbrella Angle in degrees
+var umbrellaAngle = 0.0
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
@@ -22,10 +28,21 @@ func _physics_process(delta: float) -> void:
 
 	move_and_slide()
 
+func applyRain(rainAngle):
+	var angleDiff = wrapf(rainAngle - umbrellaAngle,0.0,360.0)
+	#if protected from rain
+	if(angleDiff >= 90-rainProtectionAngle && angleDiff <= 90+rainProtectionAngle ):
+		pass
+	#not protected from rain
+	else:
+		hp -= 1.0
+	#print(hp)
+pass
+
 func _process(delta: float) -> void:
-	
-	$umbrella.rotation = (get_global_mouse_position() - self.position).angle()
-	
+	umbrellaAngle =  rad_to_deg((get_global_mouse_position() - self.position).angle())
+	$umbrella.rotation_degrees = umbrellaAngle
+	umbrellaDirection = (get_global_mouse_position() - self.position).normalized()
 	var a = 0
 	
 	for i in $umbrella/windable.get_wind_properties():

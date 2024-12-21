@@ -1,0 +1,38 @@
+[gd_scene load_steps=5 format=3 uid="uid://c56b5oph8k7na"]
+
+[ext_resource type="Script" path="res://scenes/wind/wind.gd" id="1_wqyee"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cal72"]
+
+[sub_resource type="Curve" id="Curve_4fkf5"]
+_data = [Vector2(1, 0.5), 0.3, 0.0, 1, 0]
+point_count = 1
+metadata/_snap_enabled = true
+
+[sub_resource type="Curve" id="Curve_vxhme"]
+_data = [Vector2(0, 1), 0.0, -1.0, 0, 1, Vector2(1, 0), -1.0, 0.0, 1, 0]
+point_count = 2
+
+[node name="Wind" type="Node2D"]
+script = ExtResource("1_wqyee")
+
+[node name="WindArea" type="Area2D" parent="."]
+position = Vector2(10, 0)
+collision_layer = 256
+collision_mask = 0
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WindArea"]
+shape = SubResource("RectangleShape2D_cal72")
+
+[node name="DebugHelper" type="Node2D" parent="WindArea"]
+
+[node name="Line2D2" type="Line2D" parent="WindArea/DebugHelper"]
+points = PackedVector2Array(-1, 0, 1, 0)
+width = 1.0
+width_curve = SubResource("Curve_4fkf5")
+
+[node name="Line2D" type="Line2D" parent="WindArea/DebugHelper"]
+points = PackedVector2Array(1, 0, 2, 0)
+width = 1.0
+width_curve = SubResource("Curve_vxhme")
