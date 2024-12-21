@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://bad2rbn7w7xqq"]
 
 [ext_resource type="PackedScene" uid="uid://dlcq2gkt85b4q" path="res://scenes/player/player.tscn" id="1_qv0x6"]
-[ext_resource type="PackedScene" uid="uid://cl75yrpog7s2b" path="res://scenes/wind/wind.tscn" id="2_7nnne"]
+[ext_resource type="PackedScene" uid="uid://c56b5oph8k7na" path="res://wind.tscn" id="2_accfn"]
 
 [node name="Node2D" type="Node2D"]
 
@@ -17,20 +17,6 @@ polygon = PackedVector2Array(-93, 247, -93, 282, 408, 284, 408, 245, 399, 208, 3
 [node name="player" parent="." instance=ExtResource("1_qv0x6")]
 position = Vector2(130, 124)
 
-[node name="Wind" parent="." instance=ExtResource("2_7nnne")]
-position = Vector2(-108, 158)
-size = Vector2i(200, 200)
-angle = 180.0
-strength = 3.0
-
-[node name="Wind2" parent="." instance=ExtResource("2_7nnne")]
-position = Vector2(226, 160)
-size = Vector2i(200, 200)
-angle = 90.0
-strength = 2.0
-
-[node name="Wind3" parent="." instance=ExtResource("2_7nnne")]
-position = Vector2(-218, 160)
-size = Vector2i(200, 200)
-angle = 180.0
-strength = 3.0
+[node name="Wind" parent="." instance=ExtResource("2_accfn")]
+position = Vector2(223, 133)
+size = Vector2i(185, 200)
