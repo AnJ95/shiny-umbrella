@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=3 uid="uid://c488wi6bm28k0"]
+
+[ext_resource type="TileSet" uid="uid://cl3mcj2wctpf4" path="res://scenes/tilemap/tileset_terrain.tres" id="1_eqsbw"]
+[ext_resource type="PackedScene" uid="uid://dlcq2gkt85b4q" path="res://scenes/player/player.tscn" id="2_ujo2r"]
+[ext_resource type="TileSet" uid="uid://blgt8c5ianpjd" path="res://scenes/tilemap/tileset_decoration.tres" id="3_50r0l"]
+[ext_resource type="PackedScene" uid="uid://ccuq0uylebblr" path="res://scenes/background/background.tscn" id="4_0xgk1"]
+
+[node name="Level" type="Node2D"]
+
+[node name="TileMapLayerTerrain" type="TileMapLayer" parent="."]
+tile_set = ExtResource("1_eqsbw")
+
+[node name="player" parent="." instance=ExtResource("2_ujo2r")]
+
+[node name="TileMapLayerDecoration" type="TileMapLayer" parent="."]
+tile_set = ExtResource("3_50r0l")
+
+[node name="Dynamic" type="Node2D" parent="."]
+
+[node name="Background" parent="." instance=ExtResource("4_0xgk1")]
