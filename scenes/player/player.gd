@@ -5,7 +5,6 @@ const MAX_SPEED = SPEED*2.0
 #Movement speed of player (maximum grounded speed)
 const SPEED = 300.0
 
-
 #MOVEMENT CONTROL CONSTS (grounded control factor = 1)
 #Movement control while in air
 const AIR_CONTROL = .8
@@ -112,8 +111,6 @@ func _physics_process(delta: float) -> void:
 		velocity = velocity.normalized()*MAX_SPEED
 	move_and_slide()
 
-	
-
 func applyRain(rain_angle):
 	var angle_diff = wrapf(rain_angle - umbrella_angle,0.0,360.0)
 	#if protected from rain
@@ -122,8 +119,6 @@ func applyRain(rain_angle):
 	#not protected from rain
 	else:
 		hp -= 1.0
-	#print(hp)
-pass
 
 func _process(delta: float) -> void:
 	umbrella_angle =  rad_to_deg((get_global_mouse_position() - self.position).angle())
