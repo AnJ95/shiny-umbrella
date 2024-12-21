@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://3rsa8a3rit2v"]
+[gd_scene load_steps=11 format=3 uid="uid://3rsa8a3rit2v"]
 
 [ext_resource type="Script" path="res://scenes/pudding/pudding.gd" id="1_oafip"]
 [ext_resource type="Texture2D" uid="uid://ha7odp4gyq4u" path="res://scenes/tilemap/tilemap.png" id="2_02nso"]
 [ext_resource type="Texture2D" uid="uid://b3c15l2q7a4d2" path="res://scenes/pudding/particles.png" id="3_ry80s"]
+[ext_resource type="AudioStream" uid="uid://cjxuu8yr8166d" path="res://scenes/pudding/pudding.wav" id="4_143ta"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p1lvk"]
 size = Vector2(24, 24)
@@ -64,5 +65,8 @@ process_material = SubResource("ParticleProcessMaterial_wg1sr")
 texture = ExtResource("3_ry80s")
 one_shot = true
 explosiveness = 1.0
+
+[node name="break_sound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_143ta")
 
 [connection signal="finished" from="pudding_particles" to="." method="_on_pudding_particles_finished"]
