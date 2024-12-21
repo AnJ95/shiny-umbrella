@@ -17,7 +17,11 @@ func _process(delta):
 	$WindArea/CollisionShape2D.shape.size = size
 	$WindArea.position.x = size.x/2.0
 	$WindArea/DebugHelper.global_rotation_degrees = angle
+	$DebugSprite.texture.size.x = size.x
+	$DebugSprite.texture.size.y = size.y
+	$DebugSprite.position.x = size.x/2
 
+	
 class WindProperties:
 	var angle
 	var strength

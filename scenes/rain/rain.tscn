@@ -1,6 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://xiiee8pk0inx"]
+[gd_scene load_steps=6 format=3 uid="uid://xiiee8pk0inx"]
 
-[ext_resource type="Script" path="res://rain.gd" id="1_bgcv1"]
+[ext_resource type="Script" path="res://scenes/rain/rain.gd" id="1_bgcv1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cal72"]
 
@@ -15,6 +15,15 @@ initial_velocity_min = 200.0
 initial_velocity_max = 300.0
 gravity = Vector3(0, 0, 0)
 collision_mode = 2
+
+[sub_resource type="Curve" id="Curve_qlduy"]
+_data = [Vector2(1, 0.5), 0.3, 0.0, 1, 0]
+point_count = 1
+metadata/_snap_enabled = true
+
+[sub_resource type="Curve" id="Curve_3cng8"]
+_data = [Vector2(0, 1), 0.0, -1.0, 0, 1, Vector2(1, 0), -1.0, 0.0, 1, 0]
+point_count = 2
 
 [node name="Rain" type="Node2D"]
 script = ExtResource("1_bgcv1")
@@ -34,6 +43,18 @@ amount = 16
 process_material = SubResource("ParticleProcessMaterial_bou1i")
 fixed_fps = 60
 visibility_rect = Rect2(-10, 0, 20, 20)
+
+[node name="DebugHelper" type="Node2D" parent="RainArea"]
+
+[node name="Line2D2" type="Line2D" parent="RainArea/DebugHelper"]
+points = PackedVector2Array(-1, 0, 1, 0)
+width = 1.0
+width_curve = SubResource("Curve_qlduy")
+
+[node name="Line2D" type="Line2D" parent="RainArea/DebugHelper"]
+points = PackedVector2Array(1, 0, 2, 0)
+width = 1.0
+width_curve = SubResource("Curve_3cng8")
 
 [node name="Timer" type="Timer" parent="RainArea"]
 wait_time = 0.1
