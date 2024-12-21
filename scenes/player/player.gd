@@ -151,3 +151,8 @@ func _process(delta: float) -> void:
 	
 	if Input.is_action_pressed("restart"):
 		get_tree().reload_current_scene()
+
+func hit_by_rain():
+	self.hp -= 10
+	print(self.hp)
+	pass
