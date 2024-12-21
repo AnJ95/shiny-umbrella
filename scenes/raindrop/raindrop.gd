@@ -1,11 +1,13 @@
 extends Area2D
-
+class_name RainDrop
 const RAINDROP_LIFETIME = 5.0
 
 var velocity = Vector2(0,1)
 
 func _ready() -> void:
 	$Timer.wait_time=RAINDROP_LIFETIME
+	$Timer.start()
+	pass
 
 func _process(delta: float) -> void:
 	position += velocity

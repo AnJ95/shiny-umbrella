@@ -66,6 +66,7 @@ restart={
 2d_physics/layer_8="Umbrella"
 2d_physics/layer_9="Wind"
 2d_physics/layer_10="Rain"
+2d_physics/layer_17="player_pickup"
 
 [rendering]
 

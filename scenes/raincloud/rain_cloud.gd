@@ -1,10 +1,13 @@
 @tool
-extends TileMap
-@export_range(5,20) var tick_rate = 10
+extends TileMapLayer
+class_name RainCloud
+@export_range(5,20) var tick_rate = 4
 @export_range(0, 360, 1, "degrees") var angle = 0.0
-@export var active = false
+@export var active = true
 @onready var raindrop_scene = preload("res://scenes/raindrop/raindrop.tscn")
 const MAX_RAINDROPS :int = 64
+const RAINDROP_DEVIATION = 4
+
 var positions = []
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -13,8 +16,10 @@ func _ready():
 	if !Engine.is_editor_hint():
 		$Timer.start()
 	$Timer.wait_time=1.0/tick_rate
-	for cell in get_used_cells(0):
+	for cell in get_used_cells():
 		var localPosition = map_to_local(cell)
+		var rng = RandomNumberGenerator.new()
+		localPosition.x += rng.randi_range(-RAINDROP_DEVIATION,RAINDROP_DEVIATION)
 		positions.push_back(localPosition)
 	pass # Replace with function body.
 
@@ -28,12 +33,15 @@ func _process(delta):
 
 
 func _on_timer_timeout():
-	if(active):
-		var raindrop = raindrop_scene.instantiate()
-		var rng = RandomNumberGenerator.new()
-		var raindrop_timer = Timer.new()
-		#raindrop_timer.wait_time = RAINDROP_LIFETIME
-		raindrop.position = positions[randi_range(0,positions.size()-1)]
-		if($Raindrops.get_child_count()<=MAX_RAINDROPS):
-			$Raindrops.add_child(raindrop)
+	if positions.size()==0:
+		return
+	if !Engine.is_editor_hint():
+		if(active):
+			var raindrop = raindrop_scene.instantiate()
+			var rng = RandomNumberGenerator.new()
+			var raindrop_timer = Timer.new()
+			#raindrop_timer.wait_time = RAINDROP_LIFETIME
+			raindrop.position = positions[randi_range(0,positions.size()-1)]
+			if($Raindrops.get_child_count()<=MAX_RAINDROPS):
+				$Raindrops.add_child(raindrop)
 	pass # Replace with function body.
