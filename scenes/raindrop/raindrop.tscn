@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://b6h4fj5qnijxx"]
+[gd_scene load_steps=5 format=3 uid="uid://b6h4fj5qnijxx"]
 
 [ext_resource type="Script" path="res://scenes/raindrop/raindrop.gd" id="1_poa3v"]
 [ext_resource type="Texture2D" uid="uid://e08cs0av8m45" path="res://scenes/raindrop/raindrop.png" id="2_halil"]
+[ext_resource type="AudioStream" uid="uid://em4pws1v20mj" path="res://scenes/raindrop/drop1.wav" id="3_cckr6"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_yr7fw"]
 radius = 5.0
@@ -17,5 +18,9 @@ shape = SubResource("CircleShape2D_yr7fw")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_halil")
 
+[node name="drop_sound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_cckr6")
+
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="finished" from="drop_sound" to="." method="_on_drop_sound_finished"]
