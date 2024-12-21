@@ -7,14 +7,16 @@ class_name Pickup
 @export var active = true
 @export var detect_player : bool = true
 @export var cooldown : float = 0.2 
+@export var animate = true
+var time_passed = 0.0
 @export_range(0.0, 10.0,0.25) var time_out = 0.0
 var timer:Timer
 var cooldownTimer : Timer
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$Sprite2D.texture = texture
-	$Sprite2D.scale.x = 24/texture.get_size().x
-	$Sprite2D.scale.y = 24/texture.get_size().y
+	$Sprite2D.scale.x = 32/texture.get_size().x
+	$Sprite2D.scale.y = 32/texture.get_size().y
 	if(!apply_function):
 		print("no apply function for pickup")
 		queue_free()
@@ -33,6 +35,9 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	if(animate):
+		time_passed+=delta
+		$Sprite2D.position.y=sin(time_passed)*4-4
 	if(apply_function.delete_flag):
 		queue_free()
 	if(monitoring):

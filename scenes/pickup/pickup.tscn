@@ -1,24 +1,24 @@
 [gd_scene load_steps=5 format=3 uid="uid://3cpk6seepfld"]
 
 [ext_resource type="Script" path="res://scenes/pickup/pickup.gd" id="1_q81j0"]
-[ext_resource type="Texture2D" uid="uid://dffbie7611v4g" path="res://icon.svg" id="2_31q3v"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_1qerc"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_k0mdm"]
 radius = 12.0
 
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_155bt"]
-size = Vector2(24, 24)
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_505kv"]
 
 [node name="Pickup" type="Area2D"]
 collision_layer = 0
 collision_mask = 65536
 script = ExtResource("1_q81j0")
-texture = ExtResource("2_31q3v")
+texture = SubResource("PlaceholderTexture2D_1qerc")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_k0mdm")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = SubResource("PlaceholderTexture2D_155bt")
+texture = SubResource("PlaceholderTexture2D_505kv")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
