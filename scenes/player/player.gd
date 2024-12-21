@@ -31,11 +31,11 @@ func _physics_process(delta: float) -> void:
 	var winds = $umbrella/windable.get_wind_properties()
 	for wind in winds:
 		var wind_direction = Vector2.from_angle(deg_to_rad(wind.angle))
-		if(umbrella_direction.dot(wind_direction)>=0):
+		if(umbrella_direction.dot(wind_direction)>=0.4):
 			print("in wind")
 			acceleration = wind_direction*wind.strength
 		else:
-			acceleration = wind_direction*wind.strength/10.0
+			acceleration = wind_direction*wind.strength/2.0
 	velocity += acceleration
 	move_and_slide()
 	acceleration = acceleration * damping

@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" path="res://scenes/wind/wind.gd" id="1_wqyee"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_cal72"]
-size = Vector2(185, 200)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q5ms8"]
+resource_local_to_scene = true
 
 [sub_resource type="Curve" id="Curve_4fkf5"]
 _data = [Vector2(1, 0.5), 0.3, 0.0, 1, 0]
@@ -15,7 +15,8 @@ _data = [Vector2(0, 1), 0.0, -1.0, 0, 1, Vector2(1, 0), -1.0, 0.0, 1, 0]
 point_count = 2
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_3u3ud"]
-size = Vector2(185, 200)
+resource_local_to_scene = true
+size = Vector2(20, 20)
 
 [node name="Wind" type="Node2D"]
 script = ExtResource("1_wqyee")
@@ -27,7 +28,7 @@ collision_mask = 0
 monitoring = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WindArea"]
-shape = SubResource("RectangleShape2D_cal72")
+shape = SubResource("RectangleShape2D_q5ms8")
 
 [node name="DebugHelper" type="Node2D" parent="WindArea"]
 
