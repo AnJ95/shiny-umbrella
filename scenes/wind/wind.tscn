@@ -20,7 +20,7 @@ script = ExtResource("1_wqyee")
 [node name="WindArea" type="Area2D" parent="."]
 position = Vector2(10, 0)
 collision_layer = 256
-collision_mask = 0
+collision_mask = 256
 monitoring = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WindArea"]

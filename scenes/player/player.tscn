@@ -9,9 +9,6 @@
 [ext_resource type="PackedScene" uid="uid://hu7t8skah5lv" path="res://scenes/windable/windable.tscn" id="6_8sffo"]
 [ext_resource type="Texture2D" uid="uid://xd0b3mlsrai1" path="res://scenes/player/sprites/hand.png" id="8_pxm87"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_b83yy"]
-radius = 14.0
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_kekri"]
 atlas = ExtResource("2_cp4cd")
 region = Rect2(0, 0, 32, 32)
@@ -133,11 +130,11 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_n6b1p"]
+radius = 14.0357
+
 [node name="player" type="CharacterBody2D"]
 script = ExtResource("1_1rsda")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_b83yy")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 process_callback = 0
@@ -158,7 +155,11 @@ sprite_frames = SubResource("SpriteFrames_k1wea")
 sprite_frames = SubResource("SpriteFrames_uwtxk")
 
 [node name="umbrella" type="Area2D" parent="."]
-collision_layer = 128
+collision_layer = 129
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="umbrella"]
+update_position = false
+update_scale = false
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="umbrella"]
 position = Vector2(-1, 0)
@@ -179,7 +180,11 @@ animation = &"open"
 autoplay = "open"
 
 [node name="UmbrellaCast" type="RayCast2D" parent="umbrella"]
-target_position = Vector2(48, 0)
+position = Vector2(15, 0)
+target_position = Vector2(40, 0)
+collision_mask = 257
+hit_from_inside = true
+collide_with_areas = true
 
 [node name="hands" type="Node2D" parent="umbrella"]
 
@@ -190,3 +195,6 @@ sprite_frames = SubResource("SpriteFrames_cx0go")
 [node name="right_hand" type="AnimatedSprite2D" parent="umbrella/hands"]
 position = Vector2(27, 3)
 sprite_frames = SubResource("SpriteFrames_m0m6d")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_n6b1p")
