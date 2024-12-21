@@ -1,4 +1,4 @@
-[gd_resource type="Resource" load_steps=2 format=3 uid="uid://c3m4i6hcuv0m6"]
+[gd_resource type="Resource" script_class="HealthPickupResource" load_steps=2 format=3 uid="uid://c3m4i6hcuv0m6"]
 
 [ext_resource type="Script" path="res://scenes/pickup/health_pickup.gd" id="1_ixsy3"]
 

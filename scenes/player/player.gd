@@ -97,7 +97,8 @@ func _physics_process(delta: float) -> void:
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var direction := Input.get_axis("left", "right")
 	if direction:
-		velocity.x = move_toward(velocity.x,direction * SPEED * control_factor, SPEED * control_factor*delta*MOVEMENT_INERTIA_FACTOR)
+		if(abs(velocity.x)<= SPEED or sign(velocity.x)!=sign(direction)):
+			velocity.x = move_toward(velocity.x,direction * SPEED * control_factor, SPEED * control_factor*delta*MOVEMENT_INERTIA_FACTOR)
 	else:
 		if is_on_floor():
 			velocity.x = move_toward(velocity.x, 0, SPEED*GROUND_INERTIA_FACTOR*delta)
@@ -126,8 +127,6 @@ func _physics_process(delta: float) -> void:
 		var wind_direction = Vector2.from_angle(deg_to_rad(wind.angle))
 		if(umbrella_direction.dot(wind_direction)>=0.2):
 			wind_force += wind_direction*wind.strength
-		else:
-			acceleration = 0.0
 	velocity += wind_force*SPEED*delta
 	if(velocity.length()>=MAX_SPEED):
 		velocity = velocity.normalized()*MAX_SPEED
