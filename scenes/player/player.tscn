@@ -1,8 +1,9 @@
-[gd_scene load_steps=17 format=3 uid="uid://dlcq2gkt85b4q"]
+[gd_scene load_steps=20 format=3 uid="uid://dlcq2gkt85b4q"]
 
 [ext_resource type="Script" path="res://scenes/player/player.gd" id="1_1rsda"]
 [ext_resource type="Texture2D" uid="uid://btjyke0t3qtwi" path="res://scenes/player/sprites/cookie.png" id="2_cp4cd"]
 [ext_resource type="Texture2D" uid="uid://chgcnxquejqns" path="res://scenes/player/sprites/gloss.png" id="2_wq2mr"]
+[ext_resource type="Texture2D" uid="uid://ugnwcb0oh48s" path="res://scenes/player/sprites/umbrella.png" id="3_rmrgq"]
 [ext_resource type="Texture2D" uid="uid://d3h0l1toa4xro" path="res://scenes/player/sprites/eyes.png" id="4_s8spw"]
 [ext_resource type="Texture2D" uid="uid://b3li0tf60fppp" path="res://scenes/player/sprites/mouth.png" id="5_ekqu3"]
 [ext_resource type="PackedScene" uid="uid://hu7t8skah5lv" path="res://scenes/windable/windable.tscn" id="6_8sffo"]
@@ -11,8 +12,22 @@
 radius = 14.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0ipyr"]
-radius = 9.0
-height = 38.0
+height = 54.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_go3gj"]
+atlas = ExtResource("3_rmrgq")
+region = Rect2(0, 0, 46, 61)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5redo"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_go3gj")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kekri"]
 atlas = ExtResource("2_cp4cd")
@@ -86,24 +101,21 @@ position_smoothing_enabled = true
 
 [node name="umbrella" type="Area2D" parent="."]
 
-[node name="umbrella_polygon" type="Polygon2D" parent="umbrella"]
-position = Vector2(13, 0)
-color = Color(0.554419, 0.0800593, 0, 1)
-polygon = PackedVector2Array(19, -17, 25, -14, 29, -8, 31, 0, 30, 6, 25, 13, 19, 16)
-
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="umbrella"]
 position = Vector2(13, 0)
-polygon = PackedVector2Array(19, -16, 19, 16, 25, 13, 30, 6, 31, 0, 29, -8, 25, -14)
-
-[node name="Polygon2D" type="Polygon2D" parent="umbrella"]
-color = Color(0.336551, 0.268717, 0.0896299, 1)
-polygon = PackedVector2Array(0, -1, 32, -1, 32, 1, 0, 1)
+polygon = PackedVector2Array(40, -23, 40, 23, 51, 16, 55, 6, 55, -6, 51, -16)
 
 [node name="windable" parent="umbrella" instance=ExtResource("6_8sffo")]
 position = Vector2(37, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="umbrella/windable"]
+position = Vector2(22, 0)
 shape = SubResource("CapsuleShape2D_0ipyr")
+
+[node name="umbrella_sprite" type="AnimatedSprite2D" parent="umbrella"]
+position = Vector2(41, 0)
+rotation = 1.5708
+sprite_frames = SubResource("SpriteFrames_5redo")
 
 [node name="sprites" type="Node2D" parent="."]
 
