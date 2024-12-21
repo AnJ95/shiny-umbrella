@@ -155,11 +155,8 @@ sprite_frames = SubResource("SpriteFrames_k1wea")
 sprite_frames = SubResource("SpriteFrames_uwtxk")
 
 [node name="umbrella" type="Area2D" parent="."]
-collision_layer = 129
-
-[node name="RemoteTransform2D" type="RemoteTransform2D" parent="umbrella"]
-update_position = false
-update_scale = false
+collision_layer = 128
+collision_mask = 0
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="umbrella"]
 position = Vector2(-1, 0)
@@ -168,7 +165,7 @@ polygon = PackedVector2Array(40, -23, 40, 23, 51, 16, 55, 6, 55, -6, 51, -16)
 [node name="windable" parent="umbrella" instance=ExtResource("6_8sffo")]
 position = Vector2(27, 0)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="umbrella/windable"]
+[node name="windableUmbrella" type="CollisionShape2D" parent="umbrella/windable"]
 position = Vector2(19, 0)
 shape = SubResource("CapsuleShape2D_0ipyr")
 
@@ -180,8 +177,7 @@ animation = &"open"
 autoplay = "open"
 
 [node name="UmbrellaCast" type="RayCast2D" parent="umbrella"]
-position = Vector2(15, 0)
-target_position = Vector2(40, 0)
+target_position = Vector2(55, 0)
 collision_mask = 257
 hit_from_inside = true
 collide_with_areas = true

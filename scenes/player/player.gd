@@ -99,9 +99,10 @@ func _physics_process(delta: float) -> void:
 	#If no ground between player and umbrella
 	if(!$umbrella/UmbrellaCast.is_colliding() and umbrella_open):
 		pass
-	if($umbrella/UmbrellaCast.get_collider()):
-		print($umbrella/UmbrellaCast.get_collider())
-		winds = $umbrella/windable.get_wind_properties()
+	#Wind in between player and body, affect by wind
+	if(umbrella_open):
+		if($umbrella/UmbrellaCast.get_collider() is Area2D or !$umbrella/UmbrellaCast.get_collider()):
+			winds = $umbrella/windable.get_wind_properties()
 	#If not in wind, wind_force decays by damping factor each second
 	if(winds.size() == 0): 
 		wind_force = wind_force * (1.0-WIND_DAMPING)
