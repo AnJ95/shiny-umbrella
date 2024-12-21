@@ -125,10 +125,15 @@ func applyRain(rain_angle):
 func _process(delta: float) -> void:
 	umbrella_angle =  rad_to_deg((get_global_mouse_position() - self.position).angle())
 	$umbrella.rotation_degrees = umbrella_angle
+	umbrella_direction = (get_global_mouse_position() - self.position).normalized()
+	
 	# simple hand movement. will be replaced
 	# $right_hand.rotation_degrees = umbrella_angle
 	# $left_hand.rotation_degrees = umbrella_angle
-	umbrella_direction = (get_global_mouse_position() - self.position).normalized()
+	
+	# hand movement
+	$umbrella/hands/left_hand.position.x = 11 + (cos($umbrella.rotation) + 1) * 8
+	$umbrella/hands/right_hand.position.x = 27 - (cos($umbrella.rotation) + 1) * 8
 	
 	if Input.is_action_pressed("close_umbrella"):
 		umbrella_open = false
