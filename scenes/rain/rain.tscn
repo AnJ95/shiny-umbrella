@@ -28,6 +28,7 @@ _data = [Vector2(0, 1), 0.0, -1.0, 0, 1, Vector2(1, 0), -1.0, 0.0, 1, 0]
 point_count = 2
 
 [node name="Rain" type="Node2D"]
+self_modulate = Color(0, 0, 1, 0.490196)
 script = ExtResource("1_bgcv1")
 
 [node name="RainArea" type="Area2D" parent="."]
@@ -38,6 +39,7 @@ monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RainArea"]
 shape = SubResource("RectangleShape2D_cal72")
+debug_color = Color(0, 0, 1, 0.490196)
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="RainArea/CollisionShape2D"]
 position = Vector2(0, -10)
