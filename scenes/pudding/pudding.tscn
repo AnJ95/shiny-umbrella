@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://3rsa8a3rit2v"]
+[gd_scene load_steps=10 format=3 uid="uid://3rsa8a3rit2v"]
 
 [ext_resource type="Script" path="res://scenes/pudding/pudding.gd" id="1_oafip"]
 [ext_resource type="Texture2D" uid="uid://ha7odp4gyq4u" path="res://scenes/tilemap/tilemap.png" id="2_02nso"]
@@ -22,6 +22,12 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_43ojn"]
+particles_animation = true
+particles_anim_h_frames = 3
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
 [sub_resource type="CurveXYZTexture" id="CurveXYZTexture_2jmq2"]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_wg1sr"]
@@ -34,26 +40,10 @@ orbit_velocity_max = 9.49949e-08
 radial_velocity_min = 50.0
 radial_velocity_max = 50.0
 gravity = Vector3(0, 98, 0)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_w2e1d"]
-atlas = ExtResource("3_ry80s")
-region = Rect2(16, 0, 8, 8)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_saohj"]
-atlas = ExtResource("3_ry80s")
-region = Rect2(8, 0, 8, 8)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_fl3y1"]
-atlas = ExtResource("3_ry80s")
-region = Rect2(0, 0, 8, 8)
-
-[sub_resource type="AnimatedTexture" id="AnimatedTexture_b0cya"]
-frames = 3
-frame_0/texture = SubResource("AtlasTexture_w2e1d")
-frame_1/texture = SubResource("AtlasTexture_saohj")
-frame_1/duration = 1.0
-frame_2/texture = SubResource("AtlasTexture_fl3y1")
-frame_2/duration = 1.0
+anim_speed_min = -1.0
+anim_speed_max = -1.0
+anim_offset_min = 1.0
+anim_offset_max = 1.0
 
 [node name="pudding" type="StaticBody2D"]
 collision_layer = 65
@@ -67,10 +57,11 @@ shape = SubResource("RectangleShape2D_p1lvk")
 sprite_frames = SubResource("SpriteFrames_6q5at")
 
 [node name="pudding_particles" type="GPUParticles2D" parent="."]
+material = SubResource("CanvasItemMaterial_43ojn")
 emitting = false
 amount = 10
 process_material = SubResource("ParticleProcessMaterial_wg1sr")
-texture = SubResource("AnimatedTexture_b0cya")
+texture = ExtResource("3_ry80s")
 one_shot = true
 explosiveness = 1.0
 
