@@ -16,7 +16,7 @@ position = Vector2(114, 524)
 [node name="WindPolygon" parent="." instance=ExtResource("4_bqg1v")]
 position = Vector2(253, 136)
 invert_border = 1.0
-polygon = PackedVector2Array(-205, 200, -205, 464, -13, 464, -13, 200, -13, 200, -13, 72, -13, 72, -205, 72)
+polygon = PackedVector2Array(-205, 200, -205, 464, -13, 464, -13, 200, -13, 200, -13, 80, -205, 80)
 angle = 270.0
 
 [node name="WindPolygon2" parent="." instance=ExtResource("4_bqg1v")]
