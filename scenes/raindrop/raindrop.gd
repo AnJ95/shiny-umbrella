@@ -15,7 +15,8 @@ func _process(delta: float) -> void:
 func _on_body_entered(body: Node2D) -> void:
 	set_deferred("monitoring", false)
 	self.visible = false
-	body.hit_by_rain()
+	if(body.has_method("hit_by_rain")):
+		body.hit_by_rain()
 	$drop_sound.play()
 
 func _on_area_entered(area: Area2D) -> void:
