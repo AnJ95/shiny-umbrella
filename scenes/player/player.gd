@@ -127,13 +127,12 @@ func _process(delta: float) -> void:
 	$umbrella.rotation_degrees = umbrella_angle
 	umbrella_direction = (get_global_mouse_position() - self.position).normalized()
 	
-	# simple hand movement. will be replaced
-	# $right_hand.rotation_degrees = umbrella_angle
-	# $left_hand.rotation_degrees = umbrella_angle
-	
 	# hand movement
 	$umbrella/hands/left_hand.position.x = 11 + (cos($umbrella.rotation) + 1) * 8
 	$umbrella/hands/right_hand.position.x = 27 - (cos($umbrella.rotation) + 1) * 8
+	
+	$umbrella/hands/left_hand.position.y = -3 + (cos($umbrella.rotation) + 1) * 3
+	$umbrella/hands/right_hand.position.y = 3 + (cos($umbrella.rotation) + 1) * 3
 	
 	if Input.is_action_pressed("close_umbrella"):
 		umbrella_open = false

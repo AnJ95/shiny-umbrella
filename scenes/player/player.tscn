@@ -184,9 +184,9 @@ target_position = Vector2(48, 0)
 [node name="hands" type="Node2D" parent="umbrella"]
 
 [node name="left_hand" type="AnimatedSprite2D" parent="umbrella/hands"]
-position = Vector2(11, 3)
+position = Vector2(11, -3)
 sprite_frames = SubResource("SpriteFrames_cx0go")
 
 [node name="right_hand" type="AnimatedSprite2D" parent="umbrella/hands"]
-position = Vector2(27, -3)
+position = Vector2(27, 3)
 sprite_frames = SubResource("SpriteFrames_m0m6d")
