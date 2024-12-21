@@ -33,4 +33,3 @@ strength = 200.0
 
 [node name="raincloud" parent="." instance=ExtResource("3_1am7w")]
 position = Vector2(217, -12)
-raindrop_lifetime = null

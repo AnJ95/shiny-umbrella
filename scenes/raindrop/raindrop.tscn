@@ -21,6 +21,10 @@ texture = ExtResource("2_halil")
 [node name="drop_sound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_cckr6")
 
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="finished" from="drop_sound" to="." method="_on_drop_sound_finished"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
