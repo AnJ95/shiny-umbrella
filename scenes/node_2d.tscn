@@ -18,7 +18,7 @@ polygon = PackedVector2Array(-93, 247, -93, 282, 408, 284, 408, 245, 399, 208, 3
 position = Vector2(-36, 145)
 
 [node name="Wind" parent="." instance=ExtResource("2_accfn")]
-position = Vector2(81, 119)
-size = Vector2i(185, 200)
+position = Vector2(82, -106)
+size = Vector2i(185, 700)
 angle = 270.0
-strength = 40.0
+strength = 35.0
