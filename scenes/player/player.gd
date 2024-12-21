@@ -115,10 +115,10 @@ func _physics_process(delta: float) -> void:
 
 	
 
-func applyRain(rainAngle):
-	var angleDiff = wrapf(rainAngle - umbrella_angle,0.0,360.0)
+func applyRain(rain_angle):
+	var angle_diff = wrapf(rain_angle - umbrella_angle,0.0,360.0)
 	#if protected from rain
-	if(angleDiff >= 90-UMBRELLA_PROTECTION_ANGLE && angleDiff <= 90+UMBRELLA_PROTECTION_ANGLE ):
+	if(angle_diff >= 90-UMBRELLA_PROTECTION_ANGLE && angle_diff <= 90+UMBRELLA_PROTECTION_ANGLE ):
 		pass
 	#not protected from rain
 	else:
