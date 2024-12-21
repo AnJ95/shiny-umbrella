@@ -30,7 +30,7 @@ var coyote_timer = 0.0
 #Fraction of second that movement needs to be applied to reach full speed
 const MOVEMENT_INERTIA_FACTOR = 10.0
 #Fraction of second to stop on ground
-const GROUND_INERTIA_FACTOR = 5.0
+const GROUND_INERTIA_FACTOR = 3.0
 #Fraction of second to stop in air (if SPEED is reached)
 const AIR_INERTIA_FACTOR = 1.0
 
@@ -140,3 +140,6 @@ func _process(delta: float) -> void:
 	else:
 		umbrella_open = true
 		$umbrella/umbrella_sprite.play("open")
+	
+	if Input.is_action_pressed("restart"):
+		get_tree().reload_current_scene()

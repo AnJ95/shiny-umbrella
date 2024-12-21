@@ -2,7 +2,7 @@
 
 [ext_resource type="TileSet" uid="uid://tunvhuo13u3q" path="res://scenes/tilemap/tileset.tres" id="1_46dhu"]
 [ext_resource type="PackedScene" uid="uid://dlcq2gkt85b4q" path="res://scenes/player/player.tscn" id="2_i6cxx"]
-[ext_resource type="PackedScene" uid="uid://cl75yrpog7s2b" path="res://scenes/wind/wind.tscn" id="3_kb4kf"]
+[ext_resource type="PackedScene" uid="uid://vt2g2nv5qi6n" path="res://scenes/wind/wind_polygon.tscn" id="4_bqg1v"]
 
 [node name="TerrainTest" type="Node2D"]
 
@@ -13,13 +13,12 @@ tile_set = ExtResource("1_46dhu")
 [node name="player" parent="." instance=ExtResource("2_i6cxx")]
 position = Vector2(114, 524)
 
-[node name="Wind" parent="." instance=ExtResource("3_kb4kf")]
-position = Vector2(45, 407)
-size = Vector2i(200, 400)
+[node name="WindPolygon" parent="." instance=ExtResource("4_bqg1v")]
+position = Vector2(253, 136)
+invert_border = 1.0
+polygon = PackedVector2Array(-205, 200, -205, 464, -13, 464, -13, 200, -13, 200, -13, 80, -205, 80)
 angle = 270.0
-strength = 5.0
 
-[node name="Wind2" parent="." instance=ExtResource("3_kb4kf")]
-position = Vector2(411, 295)
-size = Vector2i(200, 100)
-strength = 10.0
+[node name="WindPolygon2" parent="." instance=ExtResource("4_bqg1v")]
+position = Vector2(240, 312)
+polygon = PackedVector2Array(0, -96, 0, 32, 312, 32, 312, -96)

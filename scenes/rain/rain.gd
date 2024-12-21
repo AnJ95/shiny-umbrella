@@ -10,11 +10,17 @@ class_name Rain
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$RainArea/Timer.start()
+	update_values()
 	pass # Replace with function body.
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	if Engine.is_editor_hint():
+		update_values()
+	pass
+	
+func update_values():
 	$RainArea/CollisionShape2D.shape.size = size
 	$RainArea.position.y = size.y/2.0
 	$RainArea/CollisionShape2D/GPUParticles2D.process_material.emission_shape_scale.x = size.x/2.0

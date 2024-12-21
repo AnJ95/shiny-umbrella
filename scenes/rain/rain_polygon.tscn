@@ -1,0 +1,38 @@
+[gd_scene load_steps=4 format=3 uid="uid://cvijx1qjbxq67"]
+
+[ext_resource type="Script" path="res://scenes/rain/rain_polygon.gd" id="1_0ucea"]
+
+[sub_resource type="Curve" id="Curve_0geoy"]
+_data = [Vector2(1, 0.5), 0.3, 0.0, 1, 0]
+point_count = 1
+metadata/_snap_enabled = true
+
+[sub_resource type="Curve" id="Curve_wwltq"]
+_data = [Vector2(0, 1), 0.0, -1.0, 0, 1, Vector2(1, 0), -1.0, 0.0, 1, 0]
+point_count = 2
+
+[node name="RainPolygon" type="Polygon2D"]
+self_modulate = Color(0, 0, 1, 0.490196)
+polygon = PackedVector2Array(0, 0, 0, 20, 20, 20, 20, 0)
+script = ExtResource("1_0ucea")
+
+[node name="RainArea" type="Area2D" parent="."]
+collision_layer = 512
+collision_mask = 0
+
+[node name="CollisionPolygon" type="CollisionPolygon2D" parent="RainArea"]
+self_modulate = Color(0, 0, 1, 0.490196)
+polygon = PackedVector2Array(0, 0, 0, 20, 20, 20, 20, 0)
+
+[node name="DebugHelper" type="Node2D" parent="RainArea"]
+position = Vector2(10, 10)
+
+[node name="Line2D2" type="Line2D" parent="RainArea/DebugHelper"]
+points = PackedVector2Array(-1, 0, 1, 0)
+width = 1.0
+width_curve = SubResource("Curve_0geoy")
+
+[node name="Line2D" type="Line2D" parent="RainArea/DebugHelper"]
+points = PackedVector2Array(1, 0, 2, 0)
+width = 1.0
+width_curve = SubResource("Curve_wwltq")

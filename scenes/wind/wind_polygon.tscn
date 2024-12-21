@@ -12,23 +12,30 @@ _data = [Vector2(0, 1), 0.0, -1.0, 0, 1, Vector2(1, 0), -1.0, 0.0, 1, 0]
 point_count = 2
 
 [node name="WindPolygon" type="Polygon2D"]
+self_modulate = Color(0, 1, 0, 0.45098)
 polygon = PackedVector2Array(0, 0, 0, 20, 20, 20, 20, 0)
 script = ExtResource("1_ocd6e")
 
 [node name="WindArea" type="Area2D" parent="."]
+collision_layer = 256
+collision_mask = 0
 
 [node name="CollisionPolygon" type="CollisionPolygon2D" parent="WindArea"]
+self_modulate = Color(0, 1, 0, 0.45098)
 polygon = PackedVector2Array(0, 0, 0, 20, 20, 20, 20, 0)
 
 [node name="DebugHelper" type="Node2D" parent="WindArea"]
 position = Vector2(10, 10)
+scale = Vector2(2, 2)
 
 [node name="Line2D2" type="Line2D" parent="WindArea/DebugHelper"]
+position = Vector2(-0.5, 0)
 points = PackedVector2Array(-1, 0, 1, 0)
 width = 1.0
 width_curve = SubResource("Curve_om74g")
 
 [node name="Line2D" type="Line2D" parent="WindArea/DebugHelper"]
+position = Vector2(-0.5, 0)
 points = PackedVector2Array(1, 0, 2, 0)
 width = 1.0
 width_curve = SubResource("Curve_ucpqp")
