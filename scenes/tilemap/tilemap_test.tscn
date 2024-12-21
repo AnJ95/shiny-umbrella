@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=4 uid="uid://cmnkcms5oc5dc"]
+[gd_scene load_steps=6 format=4 uid="uid://cmnkcms5oc5dc"]
 
 [ext_resource type="TileSet" uid="uid://tunvhuo13u3q" path="res://scenes/tilemap/tileset.tres" id="1_46dhu"]
 [ext_resource type="PackedScene" uid="uid://dlcq2gkt85b4q" path="res://scenes/player/player.tscn" id="2_i6cxx"]
 [ext_resource type="PackedScene" uid="uid://b6h4fj5qnijxx" path="res://scenes/raindrop/raindrop.tscn" id="4_1dvxg"]
 [ext_resource type="PackedScene" uid="uid://vt2g2nv5qi6n" path="res://scenes/wind/wind_polygon.tscn" id="4_bqg1v"]
+[ext_resource type="PackedScene" uid="uid://duhnhhvemkuai" path="res://scenes/raincloud/raincloud.tscn" id="5_glmn2"]
 
 [node name="TerrainTest" type="Node2D"]
 
@@ -44,3 +45,7 @@ position = Vector2(196, 353)
 
 [node name="raindrop7" parent="." instance=ExtResource("4_1dvxg")]
 position = Vector2(85, 332)
+
+[node name="raincloud" parent="." instance=ExtResource("5_glmn2")]
+position = Vector2(593, 416)
+raindrop_lifetime = null

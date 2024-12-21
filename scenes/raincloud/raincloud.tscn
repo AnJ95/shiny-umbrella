@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://duhnhhvemkuai"]
+
+[ext_resource type="TileSet" uid="uid://tunvhuo13u3q" path="res://scenes/tilemap/tileset.tres" id="1_6hp74"]
+[ext_resource type="Script" path="res://scenes/raincloud/rain_cloud.gd" id="2_60jl4"]
+
+[node name="raincloud" type="TileMap"]
+tile_set = ExtResource("1_6hp74")
+format = 2
+layer_0/tile_data = PackedInt32Array(0, 65536, 2, 1, 65536, 2, 2, 65536, 2, 3, 65536, 2, 4, 65536, 2)
+script = ExtResource("2_60jl4")
+active = null
+raindrop_lifetime = null
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.1
+
+[node name="Raindrops" type="Node2D" parent="."]
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
