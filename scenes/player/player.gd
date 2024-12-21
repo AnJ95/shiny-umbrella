@@ -53,6 +53,8 @@ var hp = 100.0
 var umbrella_direction = Vector2(0.0,1.0)
 #Umbrella Angle in degrees
 var umbrella_angle = 0.0
+#Umbrella open or not?
+var umbrella_open = true
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
@@ -91,7 +93,7 @@ func _physics_process(delta: float) -> void:
 	
 	var winds = []
 	#If no ground between player and umbrella
-	if(!$umbrella/UmbrellaCast.is_colliding()):
+	if(!$umbrella/UmbrellaCast.is_colliding() and umbrella_open):
 		winds = $umbrella/windable.get_wind_properties()
 	#If not in wind, wind_force decays by damping factor each second
 	if(winds.size() == 0): 
@@ -123,6 +125,14 @@ func applyRain(rain_angle):
 func _process(delta: float) -> void:
 	umbrella_angle =  rad_to_deg((get_global_mouse_position() - self.position).angle())
 	$umbrella.rotation_degrees = umbrella_angle
-	$right_hand.rotation_degrees = umbrella_angle
-	$left_hand.rotation_degrees = umbrella_angle
+	# simple hand movement. will be replaced
+	# $right_hand.rotation_degrees = umbrella_angle
+	# $left_hand.rotation_degrees = umbrella_angle
 	umbrella_direction = (get_global_mouse_position() - self.position).normalized()
+	
+	if Input.is_action_pressed("close_umbrella"):
+		umbrella_open = false
+		$umbrella/umbrella_sprite.play("closed")
+	else:
+		umbrella_open = true
+		$umbrella/umbrella_sprite.play("open")

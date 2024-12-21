@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://dlcq2gkt85b4q"]
+[gd_scene load_steps=26 format=3 uid="uid://dlcq2gkt85b4q"]
 
 [ext_resource type="Script" path="res://scenes/player/player.gd" id="1_1rsda"]
 [ext_resource type="Texture2D" uid="uid://btjyke0t3qtwi" path="res://scenes/player/sprites/cookie.png" id="2_cp4cd"]
@@ -76,6 +76,10 @@ animations = [{
 radius = 9.0
 height = 54.0
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_a6yac"]
+atlas = ExtResource("3_rmrgq")
+region = Rect2(46, 0, 46, 47)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_vtk17"]
 atlas = ExtResource("3_rmrgq")
 region = Rect2(0, 0, 46, 47)
@@ -84,10 +88,18 @@ region = Rect2(0, 0, 46, 47)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_a6yac")
+}],
+"loop": true,
+"name": &"closed",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_vtk17")
 }],
 "loop": true,
-"name": &"default",
+"name": &"open",
 "speed": 5.0
 }]
 
@@ -163,6 +175,8 @@ shape = SubResource("CapsuleShape2D_0ipyr")
 position = Vector2(34, 0)
 rotation = 1.5708
 sprite_frames = SubResource("SpriteFrames_5redo")
+animation = &"open"
+autoplay = "open"
 
 [node name="UmbrellaCast" type="RayCast2D" parent="umbrella"]
 target_position = Vector2(48, 0)
