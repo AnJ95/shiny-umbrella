@@ -59,10 +59,15 @@ var umbrella_open = true
 const MAX_HP = 10
 var hp = MAX_HP
 
+# collision checks for death
+var floor_last_frame = false
+var ceiling_last_frame = false
+var wall_last_frame = false
+var velocity_last_frame = 0
+
 func _ready():
 	$umbrella/GroundCast.add_exception($".")
 	$umbrella/WindCast.add_exception($".")
-	pass
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
@@ -126,6 +131,12 @@ func _physics_process(delta: float) -> void:
 	velocity += wind_force*SPEED*delta
 	if(velocity.length()>=MAX_SPEED):
 		velocity = velocity.normalized()*MAX_SPEED
+	
+	velocity_last_frame = velocity.length()
+	floor_last_frame = is_on_floor()
+	wall_last_frame = is_on_wall()
+	ceiling_last_frame = is_on_ceiling()
+	
 	move_and_slide()
 
 func applyRain(rain_angle):
@@ -167,8 +178,8 @@ func _process(delta: float) -> void:
 	else:
 		$sprites/frosting.visible = false
 	
-	# death
-	if hp <= 0 and (is_on_floor() or is_on_ceiling() or is_on_wall()):
+	# collsion checks for death
+	if hp <= 0 and velocity_last_frame > 2 and ((is_on_floor() and not floor_last_frame) or (is_on_wall() and not wall_last_frame) or (is_on_ceiling() and not ceiling_last_frame)):
 		die()
 
 func hit_by_rain():
