@@ -28,10 +28,6 @@ polygon = PackedVector2Array(-88, -160, -88, 32, 80, 32, 80, -160)
 angle = 270.0
 strength = 1.7
 
-[node name="raincloud" parent="." instance=ExtResource("4_rkjl7")]
-position = Vector2(48, -336)
-tile_map_data = PackedByteArray("AAD//wAAAAABAAsAAAAAAAAAAAABAAsAAAABAAAAAAACAAsAAAD+/wAAAAAAAAsAAAA=")
-
 [node name="Node2D" type="Node2D" parent="."]
 position = Vector2(744, -744)
 
@@ -59,6 +55,35 @@ tile_map_data = PackedByteArray("AAD/////AAABAAkAAAAAAP//AAABAAkAAAD//wAAAAABAAo
 tick_rate = 10
 
 [node name="WindPolygon4" parent="." instance=ExtResource("3_1c4hf")]
+position = Vector2(1536, -504)
+polygon = PackedVector2Array(-336, -744, -336, 72, 96, 72, 96, -744)
+angle = 270.0
+strength = 2.0
+
+[node name="WindPolygon5" parent="." instance=ExtResource("3_1c4hf")]
+position = Vector2(328, -24)
+polygon = PackedVector2Array(-112, -168, -112, 0, 104, 0, 104, -168, 56, -168)
+angle = 270.0
+strength = 1.7
+
+[node name="WindPolygon6" parent="." instance=ExtResource("3_1c4hf")]
+position = Vector2(304, -224)
+polygon = PackedVector2Array(-88, -160, -88, 32, 80, 32, 80, -160)
+angle = 270.0
+strength = 1.7
+
+[node name="WindPolygon7" parent="." instance=ExtResource("3_1c4hf")]
+position = Vector2(816, -168)
+polygon = PackedVector2Array(-168, -384, -168, 0, 48, 0, 48, -384)
+angle = 270.0
+strength = 4.0
+
+[node name="raincloud3" parent="." instance=ExtResource("4_rkjl7")]
+position = Vector2(1368, -1272)
+tile_map_data = PackedByteArray("AAD/////AAABAAkAAAAAAP//AAABAAkAAAD//wAAAAABAAoAAAAAAAAAAAABAAoAAAD+/wAAAAABAAoAAAABAAAAAAABAAoAAAACAAAAAAABAAoAAAADAAAAAAABAAoAAAAEAAAAAAABAAoAAAD9/wAAAAABAAoAAAADAP//AAABAAkAAAACAP//AAABAAkAAAABAP//AAABAAkAAAD+////AAABAAkAAAD9////AAABAAkAAAAEAP//AAABAAkAAAADAP7/AAAEAAkAAAACAP7/AAABAAkAAAD+//7/AAABAAkAAAD///7/AAABAAkAAAAAAP3/AAABAAkAAAABAP3/AAAEAAkAAAABAP7/AAABAAkAAAAAAP7/AAABAAkAAAACAP3/AAABAAgAAAAEAP7/AAABAAgAAAAFAAAAAAABAAoAAAAFAP//AAABAAkAAAAGAAAAAAABAAoAAAAGAP//AAABAAkAAAAHAAAAAAABAAoAAAAIAAAAAAABAAoAAAAHAP//AAAEAAkAAAAIAP//AAABAAgAAAAFAP7/AAABAAgAAAADAP3/AAACAAgAAAABAPz/AAACAAgAAAD///3/AAABAAkAAAD9//7/AAAFAAkAAAD8////AAAFAAkAAAD8/wAAAAABAAoAAAAAAPz/AAABAAgAAAD+//3/AAAFAAkAAAAJAAAAAAACAAoAAAAJAP//AAACAAgAAAD8//7/AAAAAAgAAAD7/wAAAAAAAAoAAAD7////AAAAAAgAAAD9//3/AAAAAAgAAAD///z/AAABAAgAAAD+//z/AAAAAAgAAAAGAP7/AAABAAgAAAAHAP7/AAACAAgAAAA=")
+tick_rate = 10
+
+[node name="WindPolygon8" parent="." instance=ExtResource("3_1c4hf")]
 position = Vector2(1536, -504)
 polygon = PackedVector2Array(-336, -744, -336, 72, 96, 72, 96, -744)
 angle = 270.0

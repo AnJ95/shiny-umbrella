@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://dbpcacchurjbj"]
+
+[ext_resource type="Texture2D" uid="uid://dt6vnadqhglt2" path="res://scenes/decoration/sign_long.png" id="1_hxq0o"]
+[ext_resource type="Script" path="res://scenes/decoration/Sign.gd" id="1_pm56b"]
+
+[node name="Sign" type="Sprite2D"]
+z_index = -1
+z_as_relative = false
+texture = ExtResource("1_hxq0o")
+centered = false
+hframes = 4
+region_enabled = true
+region_rect = Rect2(0, 0, 96, 48)
+script = ExtResource("1_pm56b")
