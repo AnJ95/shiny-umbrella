@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dpg48upq8drtv"]
+[gd_scene load_steps=13 format=3 uid="uid://dpg48upq8drtv"]
 
 [ext_resource type="Texture2D" uid="uid://ugnwcb0oh48s" path="res://scenes/player/sprites/umbrella.png" id="1_qi2bh"]
 [ext_resource type="Texture2D" uid="uid://ccq26elx1yy3u" path="res://scenes/pickup/healthpickup.png" id="2_4p0ak"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://dmjvhjcp44bl7" path="res://scenes/background/background.png" id="4_3ggop"]
 [ext_resource type="Texture2D" uid="uid://ha7odp4gyq4u" path="res://scenes/tilemap/tilemap.png" id="6_1l52j"]
 [ext_resource type="Script" path="res://scenes/level_select/cloud.gd" id="7_6lhmv"]
+[ext_resource type="AudioStream" uid="uid://uymxch60orpl" path="res://scenes/music/music.wav" id="8_0qsrm"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_eo7jp"]
 atlas = ExtResource("1_qi2bh")
@@ -123,3 +124,8 @@ offset_bottom = 211.0
 grow_horizontal = 2
 texture = SubResource("AtlasTexture_tfqeg")
 script = ExtResource("7_6lhmv")
+
+[node name="background_music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_0qsrm")
+volume_db = -6.0
+autoplay = true
