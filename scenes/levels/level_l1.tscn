@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=4 uid="uid://big3a0a0s8ws6"]
+[gd_scene load_steps=11 format=4 uid="uid://big3a0a0s8ws6"]
 
 [ext_resource type="PackedScene" uid="uid://c488wi6bm28k0" path="res://scenes/levels/level.tscn" id="1_w2nuq"]
 [ext_resource type="PackedScene" uid="uid://cfa5njwr7rmau" path="res://scenes/wind/wind_polygon.tscn" id="2_scn4w"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://4oqivu0wlttl" path="res://scenes/cookiecutter/cookiecutter.tscn" id="7_min8t"]
 [ext_resource type="PackedScene" uid="uid://et4qb0tn8hhb" path="res://scenes/pickup/invulnerability_pickup.tscn" id="8_4ow3w"]
 [ext_resource type="PackedScene" uid="uid://bujmfea6bpofk" path="res://scenes/decoration/sign_icon.tscn" id="9_d88oo"]
+[ext_resource type="PackedScene" uid="uid://cw0vh47r2msn" path="res://scenes/checkpoint/checkpoint.tscn" id="10_tp8ro"]
 
 [node name="Level" instance=ExtResource("1_w2nuq")]
 
@@ -44,7 +45,7 @@ angle = 270.0
 strength = 2.0
 
 [node name="player" parent="." index="1"]
-position = Vector2(1704, -768)
+position = Vector2(1584, -864)
 
 [node name="TileMapLayerDecoration" parent="." index="2"]
 tile_map_data = PackedByteArray("AAA0APH/AQAKAAUAAAAxAPH/AQAIAAUAAAAyAPH/AQAJAAUAAAAzAPH/AQAJAAUAAAAxAPT/AQAIAAUAAAAyAPT/AQAJAAUAAAAzAPT/AQAJAAUAAAA0APT/AQAKAAUAAAA=")
@@ -62,6 +63,11 @@ position = Vector2(1704, -768)
 position = Vector2(1872, -720)
 tile_map_data = PackedByteArray("AAAAAP//AAADAAwAAAD/////AAADAAwAAAD//wAAAAAAAA4AAAAAAAAAAAABAA4AAAABAP//AAADAAwAAAADAP//AAADAAwAAAACAP//AAADAAwAAAABAAAAAAABAA4AAAACAAAAAAABAA4AAAADAAAAAAACAA4AAAA=")
 
+[node name="Sign3" parent="Choco" index="1" instance=ExtResource("9_d88oo")]
+position = Vector2(48, -72)
+frame = 1
+direction = 1
+
 [node name="CookieCutter" parent="." index="9" instance=ExtResource("7_min8t")]
 position = Vector2(1968, -768)
 collision_layer = 1
@@ -69,7 +75,6 @@ collision_layer = 1
 [node name="InvulnerabilityPickup" parent="." index="10" instance=ExtResource("8_4ow3w")]
 position = Vector2(1896, -768)
 
-[node name="Sign3" parent="." index="11" instance=ExtResource("9_d88oo")]
-position = Vector2(1920, -792)
-frame = 1
-direction = 1
+[node name="Checkpoint" parent="." index="11" instance=ExtResource("10_tp8ro")]
+z_index = -1
+position = Vector2(1704, -792)

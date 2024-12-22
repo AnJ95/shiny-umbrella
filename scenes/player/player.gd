@@ -65,6 +65,9 @@ var ceiling_last_frame = false
 var wall_last_frame = false
 var velocity_last_frame = 0
 
+var respawns : int = 3 
+var checkpoint : Checkpoint = null
+
 func _ready():
 	$umbrella/GroundCast.add_exception($".")
 	$umbrella/WindCast.add_exception($".")
@@ -190,9 +193,18 @@ func hit_by_rain():
 	print(self.hp)
 
 func die():
-	self.visible = false
-	self.set_process(false)
+	if(checkpoint && respawns >=0):
+		self.global_position = checkpoint.get_spawn_position()
+		self.velocity = Vector2(0.0,0.0)
+		self.hp = MAX_HP
+		self.respawns -= 1
+	else:
+		self.visible = false
+		self.set_process(false)
 	$audio/die_audio.play()
+
+func set_checkpoint(checkpoint:Checkpoint):
+	self.checkpoint = checkpoint
 
 func _on_die_audio_finished() -> void:
 	queue_free()
