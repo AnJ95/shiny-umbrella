@@ -1,0 +1,57 @@
+[gd_scene load_steps=8 format=3 uid="uid://dpg48upq8drtv"]
+
+[ext_resource type="Texture2D" uid="uid://ugnwcb0oh48s" path="res://scenes/player/sprites/umbrella.png" id="1_qi2bh"]
+[ext_resource type="Texture2D" uid="uid://ccq26elx1yy3u" path="res://scenes/pickup/healthpickup.png" id="2_4p0ak"]
+[ext_resource type="Texture2D" uid="uid://c3gv647bw384h" path="res://scenes/cookiecutter/cookiecutter.png" id="3_4vb77"]
+[ext_resource type="Texture2D" uid="uid://dmjvhjcp44bl7" path="res://scenes/background/background.png" id="4_3ggop"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eo7jp"]
+atlas = ExtResource("1_qi2bh")
+region = Rect2(0, 0, 48, 0)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wwqc4"]
+atlas = ExtResource("2_4p0ak")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_if5gl"]
+atlas = ExtResource("3_4vb77")
+
+[node name="level_select" type="CanvasLayer"]
+
+[node name="background" type="TextureRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -395.0
+offset_top = -1638.0
+offset_right = 469.0
+offset_bottom = 306.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_3ggop")
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="level_buttons" type="VBoxContainer" parent="CenterContainer"]
+layout_mode = 2
+
+[node name="level_1" type="Button" parent="CenterContainer/level_buttons"]
+layout_mode = 2
+text = "Level 00"
+icon = SubResource("AtlasTexture_eo7jp")
+expand_icon = true
+
+[node name="level_2" type="Button" parent="CenterContainer/level_buttons"]
+layout_mode = 2
+text = "Level 01"
+icon = SubResource("AtlasTexture_wwqc4")
+expand_icon = true
+
+[node name="level_3" type="Button" parent="CenterContainer/level_buttons"]
+layout_mode = 2
+text = "Level 02"
+icon = SubResource("AtlasTexture_if5gl")
