@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://dpg48upq8drtv"]
+[gd_scene load_steps=9 format=3 uid="uid://dpg48upq8drtv"]
 
 [ext_resource type="Texture2D" uid="uid://ugnwcb0oh48s" path="res://scenes/player/sprites/umbrella.png" id="1_qi2bh"]
 [ext_resource type="Texture2D" uid="uid://ccq26elx1yy3u" path="res://scenes/pickup/healthpickup.png" id="2_4p0ak"]
+[ext_resource type="Script" path="res://scenes/level_select/level_buttons.gd" id="2_awdd8"]
 [ext_resource type="Texture2D" uid="uid://c3gv647bw384h" path="res://scenes/cookiecutter/cookiecutter.png" id="3_4vb77"]
 [ext_resource type="Texture2D" uid="uid://dmjvhjcp44bl7" path="res://scenes/background/background.png" id="4_3ggop"]
 
@@ -38,20 +39,21 @@ grow_vertical = 2
 
 [node name="level_buttons" type="VBoxContainer" parent="CenterContainer"]
 layout_mode = 2
+script = ExtResource("2_awdd8")
 
-[node name="level_1" type="Button" parent="CenterContainer/level_buttons"]
+[node name="level_00" type="Button" parent="CenterContainer/level_buttons"]
 layout_mode = 2
 text = "Level 00"
 icon = SubResource("AtlasTexture_eo7jp")
 expand_icon = true
 
-[node name="level_2" type="Button" parent="CenterContainer/level_buttons"]
+[node name="level_01" type="Button" parent="CenterContainer/level_buttons"]
 layout_mode = 2
 text = "Level 01"
 icon = SubResource("AtlasTexture_wwqc4")
 expand_icon = true
 
-[node name="level_3" type="Button" parent="CenterContainer/level_buttons"]
+[node name="level_02" type="Button" parent="CenterContainer/level_buttons"]
 layout_mode = 2
 text = "Level 02"
 icon = SubResource("AtlasTexture_if5gl")
