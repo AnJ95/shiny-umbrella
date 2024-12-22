@@ -1,11 +1,13 @@
 shader_type canvas_item;
+
+uniform sampler2D noise_texture;
+
 void vertex() {
 	// Called for every vertex the material is visible on.
 }
 
 void fragment() {
-    vec2 centered_uv = (UV - 0.5) * 1.0;
-	COLOR.rgb += COLOR.rgb*(vec3(sin(TIME*2.0),sin(TIME*3.0),cos(TIME*2.0)/2.0+sin(TIME*5.0)/2.0))/4.0;
+	COLOR = texture(noise_texture,UV*TEXTURE_PIXEL_SIZE);
 	// Called for every pixel the material is visible on.
 }
 

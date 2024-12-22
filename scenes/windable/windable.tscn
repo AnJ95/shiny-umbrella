@@ -3,6 +3,6 @@
 [ext_resource type="Script" path="res://scenes/windable/windable.gd" id="1_wk4rt"]
 
 [node name="windable" type="Area2D"]
-collision_layer = 256
+collision_layer = 0
 collision_mask = 256
 script = ExtResource("1_wk4rt")
