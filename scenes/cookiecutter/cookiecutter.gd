@@ -8,11 +8,11 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	for body in get_overlapping_bodies():
+		if(body is Player):
+			if(body.get_node("InvulnerabilityBuff")):
+				return
+			else:
+				body.die()
+				$Sprite.frame = 1
 	pass
-
-func _on_body_entered(body):
-	if(body is Player):
-		body.hp = 0
-		body.visible = false
-		$Sprite.frame = 1
-	pass # Replace with function body.
