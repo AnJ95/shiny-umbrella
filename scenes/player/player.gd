@@ -193,6 +193,11 @@ func die():
 	self.visible = false
 	self.set_process(false)
 	$audio/die_audio.play()
+	$audio/silence.play()
 
-func _on_die_audio_finished() -> void:
+#func _on_die_audio_finished() -> void:
+#	queue_free()
+
+
+func _on_silence_finished() -> void:
 	queue_free()

@@ -1,0 +1,27 @@
+[gd_scene load_steps=6 format=3 uid="uid://cpba7ns3es1lt"]
+
+[ext_resource type="Script" path="res://scenes/pickup/windable_pickup.gd" id="1_1edtq"]
+[ext_resource type="PackedScene" uid="uid://hu7t8skah5lv" path="res://scenes/windable/windable.tscn" id="2_m5hxv"]
+[ext_resource type="PackedScene" uid="uid://3cpk6seepfld" path="res://scenes/pickup/pickup.tscn" id="3_qxy4a"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fgmgi"]
+radius = 6.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_su751"]
+radius = 12.0
+
+[node name="WindablePickup" type="RigidBody2D"]
+collision_layer = 0
+mass = 0.1
+script = ExtResource("1_1edtq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_fgmgi")
+
+[node name="windable" parent="." instance=ExtResource("2_m5hxv")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="windable"]
+shape = SubResource("CircleShape2D_su751")
+
+[node name="Pickup" parent="." instance=ExtResource("3_qxy4a")]
+texture = null

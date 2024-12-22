@@ -1,7 +1,60 @@
-[gd_scene load_steps=3 format=3 uid="uid://d4jgl0r8p2jvh"]
+[gd_scene load_steps=11 format=3 uid="uid://d4jgl0r8p2jvh"]
 
 [ext_resource type="Material" uid="uid://bjdx6ngle6ep3" path="res://scenes/shader/invulnerability_material.tres" id="1_f4quy"]
 [ext_resource type="Texture2D" uid="uid://btjyke0t3qtwi" path="res://scenes/player/sprites/cookie.png" id="2_v136f"]
+[ext_resource type="Shader" path="res://scenes/shader/wind.gdshader" id="3_c6d1x"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_vwqhh"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_60dep"]
+width = 64
+height = 64
+noise = SubResource("FastNoiseLite_vwqhh")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fd4bw"]
+shader = ExtResource("3_c6d1x")
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_60dep")
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_0s4j4"]
+size = Vector2(64, 64)
+
+[sub_resource type="Curve" id="Curve_vqou7"]
+min_value = -2.0
+max_value = 2.0
+_data = [Vector2(0, 0.373626), 0.0, 0.0, 0, 0, Vector2(1, 0.10989), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_cufpl"]
+curve = SubResource("Curve_vqou7")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_y3jbq"]
+particle_flag_align_y = true
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(1, 100, 1)
+spread = 10.0
+flatness = 1.0
+initial_velocity_min = 100.0
+initial_velocity_max = 300.0
+orbit_velocity_min = -0.2
+orbit_velocity_max = 0.2
+orbit_velocity_curve = SubResource("CurveTexture_cufpl")
+gravity = Vector3(0, 0, 0)
+linear_accel_min = -100.0
+linear_accel_max = -50.0
+damping_min = 46.479
+damping_max = 100.0
+attractor_interaction_enabled = false
+scale_min = 0.1
+scale_max = 2.0
+turbulence_noise_strength = 0.16
+turbulence_noise_speed_random = 0.1
+turbulence_influence_min = 0.0
+turbulence_initial_displacement_min = 1.49012e-06
+turbulence_initial_displacement_max = 1.49012e-06
+collision_mode = 1
+collision_friction = 0.0
+collision_bounce = 0.0
 
 [node name="Node2D" type="Node2D"]
 
@@ -10,3 +63,16 @@ texture_filter = 1
 material = ExtResource("1_f4quy")
 position = Vector2(124, 130)
 texture = ExtResource("2_v136f")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_fd4bw")
+position = Vector2(256, 80)
+texture = SubResource("PlaceholderTexture2D_0s4j4")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+modulate = Color(1, 1, 1, 0.097)
+amount = 64
+process_material = SubResource("ParticleProcessMaterial_y3jbq")
+fixed_fps = 64
+trail_enabled = true
+trail_lifetime = 0.2
