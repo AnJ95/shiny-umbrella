@@ -52,13 +52,17 @@ collision_mask = 0
 script = ExtResource("1_oafip")
 
 [node name="pudding_shape" type="CollisionShape2D" parent="."]
+position = Vector2(12, -12)
 shape = SubResource("RectangleShape2D_p1lvk")
 
 [node name="pudding_sprite" type="AnimatedSprite2D" parent="."]
+z_index = -1
+position = Vector2(12, -12)
 sprite_frames = SubResource("SpriteFrames_6q5at")
 
 [node name="pudding_particles" type="GPUParticles2D" parent="."]
 material = SubResource("CanvasItemMaterial_43ojn")
+position = Vector2(12, -12)
 emitting = false
 amount = 10
 process_material = SubResource("ParticleProcessMaterial_wg1sr")
@@ -67,6 +71,7 @@ one_shot = true
 explosiveness = 1.0
 
 [node name="break_sound" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(12, -12)
 stream = ExtResource("4_143ta")
 
 [connection signal="finished" from="pudding_particles" to="." method="_on_pudding_particles_finished"]

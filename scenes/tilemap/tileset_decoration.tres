@@ -1,4 +1,4 @@
-[gd_resource type="TileSet" load_steps=5 format=3 uid="uid://c3q5xj617rukp"]
+[gd_resource type="TileSet" load_steps=5 format=3 uid="uid://blgt8c5ianpjd"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_7i4lr"]
 load_path = "res://.godot/imported/rock_smooth.png-7a319f58f409f89fc470edcf2f83fb89.ctex"
