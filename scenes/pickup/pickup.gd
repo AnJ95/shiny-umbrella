@@ -17,8 +17,8 @@ signal picked_up
 func _ready():
 	if(texture):
 		$Sprite2D.texture = texture
-		$Sprite2D.scale.x = 32/texture.get_size().x
-		$Sprite2D.scale.y = 32/texture.get_size().y
+		$Sprite2D.scale.x = 24/texture.get_size().x
+		$Sprite2D.scale.y = 24/texture.get_size().y
 	if !Engine.is_editor_hint():
 		if(!apply_function):
 			print("no apply function for pickup")
@@ -40,8 +40,8 @@ func _ready():
 func _process(delta):
 	if(texture):
 		$Sprite2D.texture = texture
-		$Sprite2D.scale.x = 32/texture.get_size().x
-		$Sprite2D.scale.y = 32/texture.get_size().y
+		$Sprite2D.scale.x = 24/texture.get_size().x
+		$Sprite2D.scale.y = 24/texture.get_size().y
 	if !Engine.is_editor_hint():
 		if(animate):
 			time_passed+=delta

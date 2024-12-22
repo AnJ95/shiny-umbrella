@@ -1,7 +1,7 @@
 @tool
 extends TileMapLayer
 class_name RainCloud
-@export_range(5,20) var tick_rate = 4
+@export_range(1,20) var tick_rate = 4
 @export_range(0, 360, 1, "degrees") var angle = 0.0
 @export var active = true
 @onready var raindrop_scene = preload("res://scenes/raindrop/raindrop.tscn")
