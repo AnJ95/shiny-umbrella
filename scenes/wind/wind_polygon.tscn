@@ -1,6 +1,16 @@
-[gd_scene load_steps=4 format=3 uid="uid://cfa5njwr7rmau"]
+[gd_scene load_steps=7 format=3 uid="uid://cfa5njwr7rmau"]
 
+[ext_resource type="Shader" path="res://scenes/wind/wind_polygon.gdshader" id="1_1wbu6"]
 [ext_resource type="Script" path="res://scenes/wind/wind_polygon.gd" id="1_ocd6e"]
+[ext_resource type="Texture2D" uid="uid://5b16thupqg03" path="res://scenes/wind/wind.png" id="2_a287b"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6l8cm"]
+resource_local_to_scene = true
+shader = ExtResource("1_1wbu6")
+shader_parameter/speed = 1.0
+shader_parameter/scale = Vector2(15, 15)
+shader_parameter/angle = 0.0
+shader_parameter/wind_texture = ExtResource("2_a287b")
 
 [sub_resource type="Curve" id="Curve_om74g"]
 _data = [Vector2(1, 0.5), 0.3, 0.0, 1, 0]
@@ -12,7 +22,7 @@ _data = [Vector2(0, 1), 0.0, -1.0, 0, 1, Vector2(1, 0), -1.0, 0.0, 1, 0]
 point_count = 2
 
 [node name="WindPolygon" type="Polygon2D"]
-self_modulate = Color(0, 1, 0, 0.45098)
+material = SubResource("ShaderMaterial_6l8cm")
 polygon = PackedVector2Array(0, 0, 0, 20, 20, 20, 20, 0)
 script = ExtResource("1_ocd6e")
 
@@ -21,10 +31,12 @@ collision_layer = 256
 collision_mask = 256
 
 [node name="CollisionPolygon" type="CollisionPolygon2D" parent="WindArea"]
+visible = false
 self_modulate = Color(0, 1, 0, 0.45098)
 polygon = PackedVector2Array(0, 0, 0, 20, 20, 20, 20, 0)
 
 [node name="DebugHelper" type="Node2D" parent="WindArea"]
+visible = false
 position = Vector2(10, 10)
 scale = Vector2(2, 2)
 

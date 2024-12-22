@@ -45,4 +45,6 @@ func update_values():
 	$WindArea/DebugHelper.position = Vector2(minX + (maxX-minX)/2.0, minY + (maxY-minY)/2.0)
 	$WindArea/DebugHelper.global_rotation_degrees = angle
 	$WindArea/DebugHelper.scale = Vector2((maxX-minX+maxY-minY)/2.0/10.0,(maxX-minX+maxY-minY)/2.0/10.0)
+	material.set("shader_parameter/angle", angle);
+	material.set("shader_parameter/speed", strength * 0.2);
 	
