@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://3rsa8a3rit2v"]
+[gd_scene load_steps=12 format=3 uid="uid://3rsa8a3rit2v"]
 
 [ext_resource type="Script" path="res://scenes/pudding/pudding.gd" id="1_oafip"]
 [ext_resource type="Texture2D" uid="uid://ha7odp4gyq4u" path="res://scenes/tilemap/tilemap.png" id="2_02nso"]
@@ -12,15 +12,22 @@ size = Vector2(24, 24)
 atlas = ExtResource("2_02nso")
 region = Rect2(192, 144, 24, 24)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_rssbr"]
+atlas = ExtResource("2_02nso")
+region = Rect2(216, 144, 24, 24)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_6q5at"]
 animations = [{
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_kphbs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rssbr")
 }],
 "loop": true,
 "name": &"default",
-"speed": 5.0
+"speed": 4.0
 }]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_43ojn"]
@@ -59,6 +66,7 @@ shape = SubResource("RectangleShape2D_p1lvk")
 z_index = -1
 position = Vector2(12, -12)
 sprite_frames = SubResource("SpriteFrames_6q5at")
+frame_progress = 0.891213
 
 [node name="pudding_particles" type="GPUParticles2D" parent="."]
 material = SubResource("CanvasItemMaterial_43ojn")
