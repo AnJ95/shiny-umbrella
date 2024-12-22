@@ -45,7 +45,7 @@ func _process(delta):
 	if !Engine.is_editor_hint():
 		if(animate):
 			time_passed+=delta
-			$Sprite2D.position.y=sin(time_passed)*4-4
+			$Sprite2D.position.y=sin(time_passed*2.0)*6+12
 		if(apply_function.delete_flag):
 			queue_free()
 		if(monitoring):
