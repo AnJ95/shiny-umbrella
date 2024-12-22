@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://dlcq2gkt85b4q"]
+[gd_scene load_steps=29 format=3 uid="uid://dlcq2gkt85b4q"]
 
 [ext_resource type="Script" path="res://scenes/player/player.gd" id="1_1rsda"]
 [ext_resource type="Texture2D" uid="uid://btjyke0t3qtwi" path="res://scenes/player/sprites/cookie.png" id="2_cp4cd"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://xd0b3mlsrai1" path="res://scenes/player/sprites/hand.png" id="8_pxm87"]
 [ext_resource type="AudioStream" uid="uid://7ahrtn6pmo75" path="res://scenes/player/audio/die.wav" id="9_fajux"]
 [ext_resource type="AudioStream" uid="uid://c2lbj0hfj0m6o" path="res://scenes/player/audio/silence.wav" id="11_h6lhc"]
+[ext_resource type="Script" path="res://scenes/player/trigger.gd" id="12_yskin"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kekri"]
 atlas = ExtResource("2_cp4cd")
@@ -62,7 +63,7 @@ radius = 9.0
 height = 54.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_n6b1p"]
-radius = 14.0357
+radius = 11.5
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_a6yac"]
 atlas = ExtResource("3_rmrgq")
@@ -120,6 +121,9 @@ animations = [{
 "name": &"default",
 "speed": 5.0
 }]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2i4gc"]
+radius = 13.0
 
 [node name="player" type="CharacterBody2D"]
 collision_layer = 65552
@@ -207,6 +211,15 @@ stream = ExtResource("9_fajux")
 [node name="silence" type="AudioStreamPlayer2D" parent="audio"]
 stream = ExtResource("11_h6lhc")
 
+[node name="Trigger" type="Area2D" parent="."]
+collision_layer = 131072
+collision_mask = 131072
+script = ExtResource("12_yskin")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Trigger"]
+shape = SubResource("CircleShape2D_2i4gc")
+
 [connection signal="body_entered" from="umbrella" to="umbrella" method="_on_body_entered"]
 [connection signal="finished" from="audio/die_audio" to="." method="_on_die_audio_finished"]
 [connection signal="finished" from="audio/silence" to="." method="_on_silence_finished"]
+[connection signal="body_entered" from="Trigger" to="Trigger" method="_on_body_entered"]
