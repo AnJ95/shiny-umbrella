@@ -66,7 +66,9 @@ var wall_last_frame = false
 var velocity_last_frame = 0
 
 var respawns : int = 3 
+const RESPAWN_DELAY = 1.0
 var checkpoint : Checkpoint = null
+var respawning :bool = false
 
 func _ready():
 	$umbrella/GroundCast.add_exception($".")
@@ -184,8 +186,9 @@ func _process(delta: float) -> void:
 		$sprites/frosting.visible = false
 	
 	# collsion checks for death
-	if hp <= 0 and velocity_last_frame > 2 and ((is_on_floor() and not floor_last_frame) or (is_on_wall() and not wall_last_frame) or (is_on_ceiling() and not ceiling_last_frame)):
-		die()
+	if !respawning:
+		if hp <= 0 and velocity_last_frame > 2 and ((is_on_floor() and not floor_last_frame) or (is_on_wall() and not wall_last_frame) or (is_on_ceiling() and not ceiling_last_frame)):
+			die()
 
 func hit_by_rain():
 	if hp > 0:
@@ -194,11 +197,7 @@ func hit_by_rain():
 
 func die():
 	if(checkpoint && respawns >=0):
-		self.global_position = checkpoint.get_spawn_position()
-		self.velocity = Vector2(0.0,0.0)
-		self.hp = MAX_HP
-		self.respawns -= 1
-		print("remaining respawns: " + str(self.respawns))
+		respawn()
 	else:
 		self.visible = false
 		self.set_process(false)
@@ -207,5 +206,27 @@ func die():
 func set_checkpoint(checkpoint:Checkpoint):
 	self.checkpoint = checkpoint
 
+func respawn():
+	if(checkpoint):
+		var tween = get_tree().create_tween()
+		self.hp = MAX_HP
+		self.visible = false
+		set_physics_process(false)
+		self.respawning = true
+		self.velocity = Vector2(0.0,0.0)
+		tween.tween_property(self,"global_position", checkpoint.get_spawn_position(), RESPAWN_DELAY)
+		tween.finished.connect(on_respawn_complete)
+	else:
+		queue_free()
+
+func on_respawn_complete():
+	set_physics_process(true)
+	self.respawns -= 1
+	self.respawning = false
+	self.visible = true
+	
 func _on_die_audio_finished() -> void:
-	queue_free()
+	if(respawns<=0):
+		queue_free()
+	pass
+	#queue_free()

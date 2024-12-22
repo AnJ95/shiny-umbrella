@@ -76,6 +76,5 @@ collision_layer = 1
 position = Vector2(1896, -768)
 
 [node name="Checkpoint" parent="." index="11" instance=ExtResource("10_tp8ro")]
+z_index = -1
 position = Vector2(1704, -792)
-
-[node name="Checkpoint2" parent="." index="12" instance=ExtResource("10_tp8ro")]
