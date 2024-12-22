@@ -1,15 +1,12 @@
 extends TileMapLayer
 
 const TRIGGER_ANIM_NAME = "trigger"
-const GRAVITY = 9
+const GRAVITY = 28
 const DESPAWN_Y = 10000
 
 var is_triggered = false
 var is_falling = false
 var velocity = Vector2.ZERO
-
-func _ready():
-	position = Vector2.ZERO
 	
 func trigger():
 	if not is_triggered:
