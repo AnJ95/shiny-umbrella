@@ -7,6 +7,8 @@ extends PickupResource
 func applyPickup(player:Player):
 	if(player.hp < 10):
 		player.hp += hp
+		if(player.hp + hp >= 10):
+			player.hp = 10
 		uses = uses-1
 		print(player.hp)
 		print("uses" + str(uses))
