@@ -122,7 +122,7 @@ animations = [{
 }]
 
 [node name="player" type="CharacterBody2D"]
-collision_layer = 65553
+collision_layer = 65552
 collision_mask = 17
 script = ExtResource("1_1rsda")
 
@@ -159,7 +159,6 @@ polygon = PackedVector2Array(57, 0, 22, -9, 22, 9)
 
 [node name="windable" parent="umbrella" instance=ExtResource("6_8sffo")]
 position = Vector2(27, 0)
-collision_layer = 0
 
 [node name="windableUmbrella" type="CollisionShape2D" parent="umbrella/windable"]
 position = Vector2(19, 0)
