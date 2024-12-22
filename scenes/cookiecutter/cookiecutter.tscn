@@ -28,3 +28,7 @@ collision_mask = 0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MovementBlocker"]
 position = Vector2(12, 12)
 shape = SubResource("CircleShape2D_tvurk")
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

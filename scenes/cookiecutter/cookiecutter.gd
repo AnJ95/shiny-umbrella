@@ -15,4 +15,12 @@ func _process(delta):
 			else:
 				body.die()
 				$Sprite.frame = 1
+				self.monitoring=false
+				$Timer.start()
 	pass
+
+
+func _on_timer_timeout():
+	$Sprite.frame = 0
+	self.monitoring=true
+	pass # Replace with function body.

@@ -198,6 +198,7 @@ func die():
 		self.velocity = Vector2(0.0,0.0)
 		self.hp = MAX_HP
 		self.respawns -= 1
+		print("remaining respawns: " + str(self.respawns))
 	else:
 		self.visible = false
 		self.set_process(false)
