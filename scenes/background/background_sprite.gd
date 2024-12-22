@@ -6,4 +6,4 @@ func _ready():
 		var texture_size = texture.get_size()
 		var scale_factor = viewport_size.x / texture_size.x
 		scale = Vector2(scale_factor, scale_factor)
-		position = Vector2(viewport_size.x / 2, 0)
+		position = Vector2(viewport_size.x / 2, 200)

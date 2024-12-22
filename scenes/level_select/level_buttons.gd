@@ -10,4 +10,4 @@ func _process(delta: float) -> void:
 		if get_children()[i].button_pressed:
 			get_tree().change_scene_to_file(["res://scenes/levels/level_00.tscn",
 											"res://scenes/levels/level_liran.tscn",
-											"res://scenes/levels/level.tscn"][i])
+											"res://scenes/levels/level_l1.tscn"][i])

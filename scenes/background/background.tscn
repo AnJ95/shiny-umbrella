@@ -5,15 +5,16 @@
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_b1ht8"]
 atlas = ExtResource("2_jlcw1")
-region = Rect2(0, -2000, 1728, 6430)
+region = Rect2(0, -2000, 864, 5215)
 
 [node name="Background" type="ParallaxBackground"]
 layer = -1
 follow_viewport_enabled = true
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="."]
-motion_scale = Vector2(-1, 0.06)
+motion_scale = Vector2(-1, 0.04)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxLayer"]
+position = Vector2(0, 436)
 texture = SubResource("AtlasTexture_b1ht8")
 script = ExtResource("2_ruxtj")
